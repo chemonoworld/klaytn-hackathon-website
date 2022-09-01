@@ -12,13 +12,6 @@ const Button = ({ children, onClick, className }: ButtonParams) => {
   return (
     <div className={`button ${className}`} onClick={onClick}>
       <button>{children}</button>
-
-
-
-
-
-
-      
     </div>
   );
 };
