@@ -1,0 +1,51 @@
+.nav-bar-container {
+    width: 100%;
+    position: sticky;
+
+    display: flex;
+    align-items: center;
+
+    .nav-bar-logo-image {
+        height: 100px;
+        margin-right: 40px;
+    }
+
+    .nav-bar-link-image {
+        height: 32px;
+        margin: 0 10px;
+    }
+
+    .nav-bar-right {
+        margin-left: auto;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .klaytn-symbol {
+        display: block;
+        margin: auto;
+        width: 28px;
+        height: 28px;
+    }
+
+    .connect-wallet {
+        display: inline-flex;
+        align-items: center;
+        flex-direction: low;
+        vertical-align: middle;
+    }
+
+    .connect-wallet-content {
+        text-align: center;
+        margin-right: 4px;
+    }
+
+    .btn-connected {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+}

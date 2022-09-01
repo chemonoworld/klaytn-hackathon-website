@@ -1,0 +1,18 @@
+.button {
+    cursor: pointer;
+    position: relative;
+    background-color: #6D3F8C;
+    border-radius: 24px;
+    margin: 5px 10px;
+
+    button {
+        cursor: pointer;
+        margin: 10px 20px;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
