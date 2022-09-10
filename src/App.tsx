@@ -1,19 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from './assets/images/zeroxsoul-256-2.png';
+// import logo from './assets/images/sbt-256-2.png';
+import './App.scss';
 import Button from './components/Button';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Button onClick={() => alert('click')} className="test-btn">
-          <div>
-            <span>hi</span>
+      <Navbar />
+      <div className="root-container">
+        <div className="wrapper">
+          <div className="App-logo-box">
+            <img src={logo} className="App-logo" alt="logo" />
           </div>
-        </Button>
-      </header>
+          <div className="btn-box">
+            <Button onClick={() => alert('click')} className="test-btn">
+              <div>
+                <span>Klaim your soul</span>
+              </div>
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

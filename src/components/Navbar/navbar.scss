@@ -1,18 +1,34 @@
 .nav-bar-container {
+    background-color: black;
     width: 100%;
     position: sticky;
+    border-bottom: 1px solid;
+    border-color: grey;
 
-    display: flex;
-    align-items: center;
+    .wrapper {
+        width: 1080px;
+        height: 80px;
+        margin: 0px auto;
+    }
+
+    .nav-bar-home-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .nav-bar-img {
+        width: 26px;
+        height: 24px;
+        margin: 28px auto;
+    }
 
     .nav-bar-logo-image {
-        height: 100px;
-        margin-right: 40px;
+        margin-right: 48px;
     }
 
     .nav-bar-link-image {
-        height: 32px;
-        margin: 0 10px;
+        height: 80px;
+        margin: 0 12px;
     }
 
     .nav-bar-right {
@@ -23,6 +39,11 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    .zero-x-sbt-logo-img {
+        width: 80px;
+        height: 80px;
     }
 
     .klaytn-symbol {
