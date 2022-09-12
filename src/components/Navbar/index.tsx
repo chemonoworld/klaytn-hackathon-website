@@ -1,37 +1,88 @@
 import React, { useEffect, useState } from 'react';
+import Button from '../Button';
 import './navbar.scss';
-
-import ZeroXSBT from '../../assets/images/sbt-128.png';
-import Github from '../../assets/images/github-white.png';
-import Discord from '../../assets/images/discord-white.png';
-import Twitter from '../../assets/images/twitter-white-2.png';
+import SBT from '../../assets/images/sbt-h-256.png';
+import DISCORD from '../../assets/images/discord-white.png';
+import TWITTER from '../../assets/images/twitter-white.png';
+import GITHUB from '../../assets/images/github-white.png';
 
 const Navbar = () => {
   return (
-    <header className="nav-bar-container">
-      <div className="wrapper">
-        <a href="#" className="nav-bar-logo-image">
-          <img
-            src={ZeroXSBT}
-            alt="zero-x-sbt-logo"
-            className="nav-bar-home-img"
-          />
-        </a>
-        <a
-          href="https://github.com/chemonoworld/klaytn-hackathon"
-          className="nav-bar-link-image"
-        >
-          <img src={Github} alt="github-white" className="nav-bar-img" />
-        </a>
-        <a href="https://twitter.com/GRT_LEE" className="nav-bar-link-image">
-          <img src={Twitter} alt="twitter-white" className="nav-bar-img" />
-        </a>
-        <a href="https://discord.gg/QZC9HaCnYz" className="nav-bar-link-image">
-          <img src={Discord} alt="discord-white" className="nav-bar-img" />
-        </a>
-        <div className="nav-bar-right btn-connect-wallet"></div>
+    <div className="navbar-container bg-dark">
+      <div className="navbar navbar-dark navbar-expand-lg" data-sticky="top">
+        <div className="container">
+          <a className="navbar-brand fade-page" href="/">
+            <img src={SBT} alt="0xSBT" className="navbar-logo-img" />
+          </a>
+          <div className="navbar-content navbar-collapsed">
+            <div className="navbar-link-container">
+              <a href="/team" className="navbar-link">
+                DAO
+              </a>
+            </div>
+            <div className="navbar-link-container">
+              <a href="/team" className="navbar-link">
+                0xSoul
+              </a>
+            </div>
+            <div className="navbar-link-container">
+              <a href="/extension" className="navbar-link">
+                Extension
+              </a>
+            </div>
+            <div className="navbar-link-container">
+              <a href="/docs" className="navbar-link">
+                Team
+              </a>
+            </div>
+            <div className="navbar-link-container">
+              <a href="/docs" className="navbar-link">
+                Docs
+              </a>
+            </div>
+            <div className="navbar-icons-box">
+              <a
+                href="https://github.com/0xSBT/Contracts"
+                className="navbar-icon-container navbar-github"
+              >
+                <img
+                  src={GITHUB}
+                  alt="GITHUB"
+                  className="navbar-icon-img navbar-github-img"
+                />
+              </a>
+              <a href="" className="navbar-icon-container navbar-twitter">
+                <img
+                  src={TWITTER}
+                  alt="TWITTER"
+                  className="navbar-icon-img navbar-twitter-img"
+                />
+              </a>
+              <a
+                href="https://discord.gg/QZC9HaCnYz"
+                className="navbar-icon-container navbar-discord"
+              >
+                <img
+                  src={DISCORD}
+                  alt="DISCORD"
+                  className="navbar-icon-img navbar-discord-img"
+                />
+              </a>
+            </div>
+          </div>
+          <div className="navbar-btn-container">
+            <Button
+              onClick={() => {
+                alert('click connect wallet');
+              }}
+              className="btn-connect-wallet"
+            >
+              <span>connect wallet</span>
+            </Button>
+          </div>
+        </div>
       </div>
-    </header>
+    </div>
   );
 };
 

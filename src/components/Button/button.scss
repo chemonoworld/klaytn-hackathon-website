@@ -1,3 +1,5 @@
+@import "../../color.scss";
+
 .button {
     cursor: pointer;
     position: relative;
@@ -5,24 +7,47 @@
     border: solid;
     border-radius: 4px;
     border-width: 2px;
-    border-color: #E6007A;
-    margin: 8px 8px;
+    border-color: $pink;
+    margin: 0 1vw;
 
     button {
         cursor: pointer;
-        margin: 8px 20px;
+        margin: 0.35rem 0.7rem;
         border: none;
         background-color: transparent;
         outline: none;
-        color: white;
+        color: $pink;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 16px;
-        font-weight: bold;
+        font-family: "arcade-classic";
+        word-spacing: 0.2rem;
+        white-space: nowrap;
     }
+
 }
 
 .button:hover {
-    border-color: #00ffe1;
+    border-color: $cyan;
+
+    button {
+        color: $cyan;
+    }
+}
+
+.btn-white {
+    border-color: $white;
+
+    button {
+        color: $white;
+    }
+}
+
+.btn-red {
+    border-color: $red;
+
+    button {
+        color: $red;
+    }
 }
