@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 import SBT from '../../assets/images/sbt-256.png';
 import SOUL from '../../assets/images/soul-256.png';
-import './mainpage.scss';
+import './soulpage.scss';
 
 type mainContentProps = {
   // true : SBT false: SOUL
