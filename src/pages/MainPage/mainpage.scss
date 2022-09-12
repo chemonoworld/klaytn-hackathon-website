@@ -19,7 +19,7 @@ ol {
 .btn-joystick {
     position: relative;
     left: 0rem;
-    top: -4rem;
+    top: -3rem;
     margin: 0 auto;
     width: 4rem;
     height: 4rem;
@@ -82,8 +82,6 @@ ol {
         translate: 0rem;
     }
 }
-
-
 
 .main-logo-container {
     display: flex;
@@ -151,5 +149,47 @@ ol {
     .btn-container {
         margin: 0 1vw;
         text-align: center;
+    }
+}
+
+@media (min-width: 0px) {
+    .container {
+        max-width: 320px;
+    }
+
+    .main-section-btn-txt {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .main-section-btn-txt {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .main-section-btn-txt {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
     }
 }
