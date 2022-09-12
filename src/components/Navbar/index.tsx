@@ -16,12 +16,12 @@ const Navbar = () => {
           </a>
           <div className="navbar-content navbar-collapsed">
             <div className="navbar-link-container">
-              <a href="/team" className="navbar-link">
+              <a href="/" className="navbar-link">
                 DAO
               </a>
             </div>
             <div className="navbar-link-container">
-              <a href="/team" className="navbar-link">
+              <a href="/soul" className="navbar-link">
                 0xSoul
               </a>
             </div>

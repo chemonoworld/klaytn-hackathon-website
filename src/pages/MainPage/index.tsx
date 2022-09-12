@@ -3,8 +3,6 @@ import Button from '../../components/Button';
 import SBT from '../../assets/images/sbt-256.png';
 import SOUL from '../../assets/images/soul-256.png';
 import './mainpage.scss';
-import JOYSTICK from '../../assets/images/joystick-64.png';
-import JOYSTICK_RIGHT from '../../assets/images/joystick-right-64.png';
 
 const MainPage = () => {
   const [SBTorSOUL, setSBTorSOUL] = useState(true); // true : SBT false: SOUL
@@ -15,19 +13,21 @@ const MainPage = () => {
       mainLogo?.setAttribute('class', 'main-logo main-logo-appear');
     }
   }, [isLogoTranslate]);
-  const handleCarousel = () => {
+  const handleSlide = () => {
     const mainLogo = document.querySelector('.main-logo');
     mainLogo?.setAttribute('class', 'main-logo main-logo-init');
     setIsLogoTranslate(true);
     const joystick = document.querySelector('.btn-joystick');
     joystick?.setAttribute('class', 'btn-joystick btn-joystick-clicked');
-    const timer = setTimeout(() => {
+    const logoTimer = setTimeout(() => {
       const mainLogo = document.querySelector('.main-logo');
       mainLogo?.setAttribute('class', 'main-logo');
       setIsLogoTranslate(false);
-      joystick?.setAttribute('class', 'btn-joystick');
-      clearTimeout(timer);
     }, 200);
+    const joystickTimer = setTimeout(() => {
+      joystick?.setAttribute('class', 'btn-joystick');
+      clearTimeout(joystickTimer);
+    }, 500);
     if (SBTorSOUL) {
       setSBTorSOUL(false);
       const btn = document.querySelectorAll('.btn-main-section')[0];
@@ -57,7 +57,7 @@ const MainPage = () => {
     }
   };
   const handleClickMainBtns = () => {
-    alert('hihi');
+    alert('click button');
   };
   return (
     <div className="root-container">
@@ -69,7 +69,7 @@ const MainPage = () => {
             ) : (
               <img src={SOUL} className="main-logo logo-sbt" alt="logo" />
             )}
-            <div onClick={handleCarousel} className="btn-joystick"></div>
+            <div onClick={handleSlide} className="btn-joystick"></div>
           </div>
           <div className="main-section-content explanation-box">
             <span className="explanation-title">FEATURE</span>
@@ -153,10 +153,7 @@ const MainPage = () => {
       </section>
       <div className="btn-box">
         <div className="btn-container">
-          <Button
-            onClick={() => alert('Learn more')}
-            className="btn-main-section"
-          >
+          <Button onClick={handleClickMainBtns} className="btn-main-section">
             <div className="main-section-btn-txt">
               <span>Learn more</span>
             </div>
@@ -164,7 +161,7 @@ const MainPage = () => {
         </div>
         <div className="btn-container">
           <Button
-            onClick={() => alert('Launch App')}
+            onClick={handleClickMainBtns}
             className="btn-main-section btn-white"
           >
             <div className="main-section-btn-txt">
