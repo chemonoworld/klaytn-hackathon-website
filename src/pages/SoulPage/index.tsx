@@ -159,9 +159,12 @@ const MainPage = ({ mainContent }: mainContentProps) => {
       <div className="btn-box">
         <div className="container">
           <div className="btn-container">
-            <Button onClick={handleClickMainBtns} className="btn-main-section">
+            <Button
+              onClick={handleClickMainBtns}
+              className="btn-main-section btn-red"
+            >
               <div className="main-section-btn-txt">
-                <span>Learn more</span>
+                <span>Klaim your soul</span>
               </div>
             </Button>
           </div>
@@ -171,7 +174,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
               className="btn-main-section btn-white"
             >
               <div className="main-section-btn-txt">
-                <span>Launch App</span>
+                <span>Download extension</span>
               </div>
             </Button>
           </div>
