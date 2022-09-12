@@ -5,6 +5,7 @@ import SBT from '../../assets/images/sbt-h-256.png';
 import DISCORD from '../../assets/images/discord-white.png';
 import TWITTER from '../../assets/images/twitter-white.png';
 import GITHUB from '../../assets/images/github-white.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -16,14 +17,14 @@ const Navbar = () => {
           </a>
           <div className="navbar-content navbar-collapsed">
             <div className="navbar-link-container">
-              <a href="/" className="navbar-link">
+              <Link to="/" className="navbar-link">
                 DAO
-              </a>
+              </Link>
             </div>
             <div className="navbar-link-container">
-              <a href="/soul" className="navbar-link">
-                0xSoul
-              </a>
+              <Link to="/soul" className="navbar-link">
+                0xSOUL
+              </Link>
             </div>
             <div className="navbar-link-container">
               <a href="/extension" className="navbar-link">

@@ -1,14 +1,14 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
-import Navbar from './components/Navbar';
 import MainPage from './pages/MainPage';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <MainPage />
-    </div>
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/soul" element={<MainPage />} />
+    </Routes>
   );
 }
 
