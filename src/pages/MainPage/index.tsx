@@ -1,11 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../../components/Button';
 import SBT from '../../assets/images/sbt-256.png';
 import SOUL from '../../assets/images/soul-256.png';
+import './mainpage.scss';
+import JOYSTICK from '../../assets/images/joystick-64.png';
+import JOYSTICK_RIGHT from '../../assets/images/joystick-right-64.png';
 
 const MainPage = () => {
   const [SBTorSOUL, setSBTorSOUL] = useState(true); // true : SBT false: SOUL
+  const [isLogoTranslate, setIsLogoTranslate] = useState(false);
+  useEffect(() => {
+    if (!isLogoTranslate) {
+      const mainLogo = document.querySelector('.main-logo');
+      mainLogo?.setAttribute('class', 'main-logo main-logo-appear');
+    }
+  }, [isLogoTranslate]);
   const handleCarousel = () => {
+    const mainLogo = document.querySelector('.main-logo');
+    mainLogo?.setAttribute('class', 'main-logo main-logo-init');
+    setIsLogoTranslate(true);
+    const joystick = document.querySelector('.btn-joystick');
+    joystick?.setAttribute('class', 'btn-joystick btn-joystick-clicked');
+    const timer = setTimeout(() => {
+      const mainLogo = document.querySelector('.main-logo');
+      mainLogo?.setAttribute('class', 'main-logo');
+      setIsLogoTranslate(false);
+      joystick?.setAttribute('class', 'btn-joystick');
+      clearTimeout(timer);
+    }, 200);
     if (SBTorSOUL) {
       setSBTorSOUL(false);
       const btn = document.querySelectorAll('.btn-main-section')[0];
@@ -41,12 +63,13 @@ const MainPage = () => {
     <div className="root-container">
       <section className="main-section">
         <div className="container main-section-container">
-          <div className="main-section-content main-logo-box">
+          <div className="main-section-content main-logo-container">
             {SBTorSOUL === true ? (
               <img src={SBT} className="main-logo logo-sbt" alt="logo" />
             ) : (
               <img src={SOUL} className="main-logo logo-sbt" alt="logo" />
             )}
+            <div onClick={handleCarousel} className="btn-joystick"></div>
           </div>
           <div className="main-section-content explanation-box">
             <span className="explanation-title">FEATURE</span>
@@ -113,7 +136,14 @@ const MainPage = () => {
                   <span>
                     Extension shows the list of{' '}
                     <span className="txt-red txt-hover-cyan">DAOs</span> you
-                    belongs to
+                    belong to
+                  </span>
+                </li>
+                <li>
+                  <span className="new-line-float-left">
+                    Extension show the{' '}
+                    <span className="txt-red txt-hover-cyan">rating</span> of
+                    the DAOs you belong to
                   </span>
                 </li>
               </ol>
@@ -142,9 +172,6 @@ const MainPage = () => {
             </div>
           </Button>
         </div>
-      </div>
-      <div>
-        <button onClick={handleCarousel}>expand</button>
       </div>
     </div>
   );

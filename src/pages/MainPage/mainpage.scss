@@ -1,0 +1,155 @@
+@import "../../color.scss";
+@import "../../font.scss";
+
+ol>li>span {
+    float: left;
+}
+
+.new-line-left {
+    float: left;
+}
+
+ol {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+}
+
+.btn-joystick {
+    position: relative;
+    left: 0rem;
+    top: -4rem;
+    margin: 0 auto;
+    width: 4rem;
+    height: 4rem;
+    background-image: url("../../assets/images/joystick-64.png");
+}
+
+.btn-joystick:hover {
+    cursor: pointer;
+}
+
+.btn-joystick-clicked {
+    animation: btn-joystick-move 1s linear;
+    animation: btn-joystick-return 1s linear;
+}
+
+@keyframes btn-joystick-move {
+    from {
+        background-image: url("../../assets/images/joystick-64.png");
+    }
+
+    to {
+        background-image: url("../../assets/images/joystick-right-64.png");
+    }
+}
+
+@keyframes btn-joystick-return {
+    from {
+        background-image: url("../../assets/images/joystick-right-64.png");
+    }
+
+    to {
+        background-image: url("../../assets/images/joystick-64.png");
+    }
+}
+
+.main-logo {
+    height: 40vmin;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-family: "SpaceMono-Regular", "Helvetica", "Arial", sans-serif;
+}
+
+.main-logo-appear {
+    animation: main-logo-appear 1s ease;
+}
+
+.main-logo-init {
+    translate: -30rem;
+}
+
+@keyframes main-logo-appear {
+    from {
+        translate: -30rem;
+    }
+
+    to {
+        translate: 0rem;
+    }
+}
+
+
+
+.main-logo-container {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.txt-pink {
+    cursor: default;
+    color: $pink;
+}
+
+.txt-red {
+    cursor: default;
+    color: $red;
+}
+
+.txt-hover-cyan:hover {
+    color: $cyan;
+}
+
+.App-logo-box {
+    pointer-events: none;
+}
+
+.bg-dark {
+    background-color: $black;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    margin: auto;
+}
+
+.main-section-container {
+    //media query 처리해야함
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-section-container {
+    // background-image: ;
+}
+
+.explanation-title {
+    font-family: "unbounded-bold";
+}
+
+.main-section-content {
+    margin: 0rem 0rem 2rem 2.5rem;
+}
+
+.main-section-btn-txt {
+    font-size: 1.75rem;
+}
+
+.btn-box {
+    margin-top: 2.5rem;
+    display: flex;
+
+    .btn-container {
+        margin: 0 1vw;
+        text-align: center;
+    }
+}
