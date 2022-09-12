@@ -152,22 +152,24 @@ const MainPage = () => {
         </div>
       </section>
       <div className="btn-box">
-        <div className="btn-container">
-          <Button onClick={handleClickMainBtns} className="btn-main-section">
-            <div className="main-section-btn-txt">
-              <span>Learn more</span>
-            </div>
-          </Button>
-        </div>
-        <div className="btn-container">
-          <Button
-            onClick={handleClickMainBtns}
-            className="btn-main-section btn-white"
-          >
-            <div className="main-section-btn-txt">
-              <span>Launch App</span>
-            </div>
-          </Button>
+        <div className="container">
+          <div className="btn-container">
+            <Button onClick={handleClickMainBtns} className="btn-main-section">
+              <div className="main-section-btn-txt">
+                <span>Learn more</span>
+              </div>
+            </Button>
+          </div>
+          <div className="btn-container">
+            <Button
+              onClick={handleClickMainBtns}
+              className="btn-main-section btn-white"
+            >
+              <div className="main-section-btn-txt">
+                <span>Launch App</span>
+              </div>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
