@@ -4,6 +4,7 @@ import Button from '../../components/Button';
 import SBT from '../../assets/images/sbt-256.png';
 import SOUL from '../../assets/images/soul-256.png';
 import './mainpage.scss';
+import { clear } from 'console';
 
 type mainContentProps = {
   // true : SBT false: SOUL
@@ -19,21 +20,23 @@ const MainPage = ({ mainContent }: mainContentProps) => {
       mainLogo?.setAttribute('class', 'main-logo main-logo-appear');
     }
   }, [isLogoTranslate]);
+  const startJoystickAnim = () => {
+    const joystick = document.querySelector('.btn-joystick');
+    joystick?.setAttribute('class', 'btn-joystick btn-joystick-clicked');
+    const joystickTimer = setTimeout(() => {
+      joystick?.setAttribute('class', 'btn-joystick');
+      clearTimeout(joystickTimer);
+    }, 500);
+  };
   const handleSlide = () => {
     const mainLogo = document.querySelector('.main-logo');
     mainLogo?.setAttribute('class', 'main-logo main-logo-init');
     setIsLogoTranslate(true);
-    const joystick = document.querySelector('.btn-joystick');
-    joystick?.setAttribute('class', 'btn-joystick btn-joystick-clicked');
     const logoTimer = setTimeout(() => {
       const mainLogo = document.querySelector('.main-logo');
       mainLogo?.setAttribute('class', 'main-logo');
       setIsLogoTranslate(false);
     }, 200);
-    const joystickTimer = setTimeout(() => {
-      joystick?.setAttribute('class', 'btn-joystick');
-      clearTimeout(joystickTimer);
-    }, 500);
     if (SBTorSOUL) {
       setSBTorSOUL(false);
       const btn = document.querySelectorAll('.btn-main-section')[0];
@@ -61,6 +64,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
         ? (textInWhiteBtn.innerText = 'Launch app')
         : alert('button color shift error');
     }
+    startJoystickAnim();
   };
   const handleClickMainBtns = () => {
     alert('click button');

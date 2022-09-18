@@ -32,13 +32,8 @@ const Navbar = () => {
               </a>
             </div>
             <div className="navbar-link-container">
-              <a href="/docs" className="navbar-link">
-                Team
-              </a>
-            </div>
-            <div className="navbar-link-container">
-              <a href="/docs" className="navbar-link">
-                Docs
+              <a href="https://dorahacks.io/buidl/3364" className="navbar-link">
+                About us
               </a>
             </div>
             <div className="navbar-icons-box">
@@ -52,7 +47,10 @@ const Navbar = () => {
                   className="navbar-icon-img navbar-github-img"
                 />
               </a>
-              <a href="" className="navbar-icon-container navbar-twitter">
+              <a
+                href="https://twitter.com/postech_dao"
+                className="navbar-icon-container navbar-twitter"
+              >
                 <img
                   src={TWITTER}
                   alt="TWITTER"
