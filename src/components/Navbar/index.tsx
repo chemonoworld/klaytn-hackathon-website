@@ -32,7 +32,7 @@ const Navbar = () => {
               </a>
             </div>
             <div className="navbar-link-container">
-              <a href="/docs" className="navbar-link">
+              <a href="https://dorahacks.io/buidl/3364" className="navbar-link">
                 About us
               </a>
             </div>
