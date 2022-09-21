@@ -101,6 +101,14 @@ ol {
     overflow-x: hidden;
 }
 
+.cursor-ptr:hover {
+    cursor: pointer
+}
+
+.txt-deco-none {
+    text-decoration: none;
+}
+
 .txt-pink {
     cursor: default;
     color: $pink;
@@ -113,10 +121,6 @@ ol {
 
 .txt-hover-cyan:hover {
     color: $cyan;
-}
-
-.App-logo-box {
-    pointer-events: none;
 }
 
 .bg-dark {
