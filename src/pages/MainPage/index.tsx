@@ -37,6 +37,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
       const mainLogo = document.querySelector('.main-logo');
       mainLogo?.setAttribute('class', 'main-logo');
       setIsLogoTranslate(false);
+      clearTimeout(logoTimer);
     }, 200);
     if (SBTorSOUL) {
       setSBTorSOUL(false);

@@ -28,6 +28,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
       const mainLogo = document.querySelector('.main-logo');
       mainLogo?.setAttribute('class', 'main-logo');
       setIsLogoTranslate(false);
+      clearTimeout(logoTimer);
     }, 200);
     const joystickTimer = setTimeout(() => {
       joystick?.setAttribute('class', 'btn-joystick');
