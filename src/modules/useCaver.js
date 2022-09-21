@@ -30,7 +30,7 @@ const soulContract = new caverForCall.contract(
 const test = async () => {
   const count = await soulContract.methods.totalSupply().call();
   console.log(count);
-  alert(count);
+  // alert(count);
   return count;
 };
 
