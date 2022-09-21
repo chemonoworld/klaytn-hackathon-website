@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className="navbar-content navbar-collapsed">
             <div className="navbar-link-container">
               <Link to="/" className="navbar-link">
-                DAO
+                DA0xSBT
               </Link>
             </div>
             <div className="navbar-link-container">
@@ -40,6 +40,7 @@ const Navbar = () => {
               <a
                 href="https://github.com/0xSBT/Contracts"
                 className="navbar-icon-container navbar-github"
+                target="_blank"
               >
                 <img
                   src={GITHUB}
@@ -50,6 +51,7 @@ const Navbar = () => {
               <a
                 href="https://twitter.com/postech_dao"
                 className="navbar-icon-container navbar-twitter"
+                target="_blank"
               >
                 <img
                   src={TWITTER}
@@ -60,6 +62,7 @@ const Navbar = () => {
               <a
                 href="https://discord.gg/QZC9HaCnYz"
                 className="navbar-icon-container navbar-discord"
+                target="_blank"
               >
                 <img
                   src={DISCORD}
