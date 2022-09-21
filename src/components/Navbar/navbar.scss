@@ -3,6 +3,7 @@
 a.navbar-link {
     color: $gray;
     text-decoration: none !important;
+    white-space: nowrap;
 }
 
 a.navbar-link:hover {
