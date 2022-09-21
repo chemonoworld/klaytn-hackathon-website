@@ -17,6 +17,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
   const [isLogoTranslate, setIsLogoTranslate] = useState(false);
   const [isJoystickTrans, setIsJoystickTrans] = useState(false);
   useEffect(() => {
+    test();
     if (!isJoystickTrans) {
       const joystick = document.querySelector('.btn-joystick');
       joystick?.setAttribute('class', 'btn-joystick btn-joystick-clicked');
