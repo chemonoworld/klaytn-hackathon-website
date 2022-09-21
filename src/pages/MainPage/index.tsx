@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 import SBT from '../../assets/images/sbt-256.png';
 import SOUL from '../../assets/images/soul-256.png';
 import './mainpage.scss';
-import { clear } from 'console';
+import { test } from '../../modules/useCaver';
 
 type mainContentProps = {
   // true : SBT false: SOUL
@@ -15,6 +15,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
   const [SBTorSOUL, setSBTorSOUL] = useState(mainContent);
   const [isLogoTranslate, setIsLogoTranslate] = useState(false);
   useEffect(() => {
+    test();
     if (!isLogoTranslate) {
       const mainLogo = document.querySelector('.main-logo');
       mainLogo?.setAttribute('class', 'main-logo main-logo-appear');
