@@ -43,7 +43,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
       mainLogo?.setAttribute('class', 'main-logo');
       setIsLogoTranslate(false);
       clearTimeout(logoTimer);
-    }, 800);
+    }, 500);
     startJoystickAnim();
   };
   const handleClickMainBtns = () => {
