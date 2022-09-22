@@ -25,10 +25,10 @@ const WalletConnection = () => {
 
   let detectionTimer = setTimeout(() => {
     const { klaytn } = window;
-    if (klaytn.selectedAddress !== '' && klaytn.selectedAddress !== undefined && klaytn.selectedAddress !== address) {
+    if ( klaytn.selectedAddress !== '' && klaytn.selectedAddress !== undefined && klaytn.selectedAddress !== address ) {
       console.log('account changed');
     }
-    if (klaytn.networkVersion !== '' && klaytn.networkVersion !== undefined && klaytn.networkVersion !== network) {
+    if ( klaytn.networkVersion !== '' && klaytn.networkVersion !== undefined && klaytn.networkVersion !== network ) {
       console.log('network changed');
     }
     clearTimeout(detectionTimer);
