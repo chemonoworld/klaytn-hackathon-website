@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../../components/Navbar';
+import { useEffect, useState } from 'react';
 import Button from '../../components/Button';
 import SBT from '../../assets/images/sbt-256.png';
 import SOUL from '../../assets/images/soul-256.png';
