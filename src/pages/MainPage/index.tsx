@@ -4,7 +4,7 @@ import SBT from '../../assets/images/sbt-256.png';
 import SOUL from '../../assets/images/soul-256.png';
 import './mainpage.scss';
 import { test } from '../../modules/useCaver';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type mainContentProps = {
   // true : SBT false: SOUL
@@ -15,6 +15,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
   const [SBTorSOUL, setSBTorSOUL] = useState(mainContent);
   const [isLogoTranslate, setIsLogoTranslate] = useState(false);
   const [isJoystickTrans, setIsJoystickTrans] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     test();
     if (!isJoystickTrans) {
@@ -49,7 +50,8 @@ const MainPage = ({ mainContent }: mainContentProps) => {
     startJoystickAnim();
   };
   const handleClickMainBtns = () => {
-    alert('click button');
+    alert('Go to rating');
+    navigate('/rating');
   };
   return (
     <div className="root-container">
