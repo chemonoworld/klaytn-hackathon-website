@@ -84,6 +84,11 @@ const Navbar = () => {
               </a>
             </div>
           </div>
+          {network == '8217' ? (
+            <div className="network-state-dot network-state-mainnet"></div>
+          ) : (
+            <div className="network-state-dot network-state-testnet"></div>
+          )}
           <div className="navbar-btn-container navbar-btn-collapsed">
             <Button
               onClick={() => {

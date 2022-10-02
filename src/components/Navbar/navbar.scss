@@ -116,6 +116,22 @@ a.navbar-link:hover {
     brightness(104%) contrast(100%);
 }
 
+.network-state-dot {
+  width: 0.35rem;
+  height: 0.35rem;
+  margin: auto;
+  background-color: $white;
+  border-radius: 50%;
+}
+
+.network-state-mainnet {
+  background-color: $green;
+}
+
+.network-state-testnet {
+  background-color: $red;
+}
+
 @media (max-width: 768px) {
   .navbar-link-collapsed {
     display: none;
