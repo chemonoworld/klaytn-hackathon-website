@@ -45,22 +45,17 @@ const WalletConnection = () => {
 
   const loadAccountInfo = async () => {
     const { klaytn } = window;
-
     if (klaytn) {
       try {
         const result = await klaytn.enable();
-        if (result !== undefined) {
-          setIsConnected(true);
-        } else {
-          setIsConnected(false);
-        }
-        await setAccountInfo();
+        result !== undefined ? setIsConnected(true) : setIsConnected(false);
+        setAccountInfo();
         klaytn.on('accountsChanged', () => setAccountInfo());
       } catch (error) {
-        console.log('로그인이 실패하였습니다.');
+        alert('로그인이 실패하였습니다.');
       }
     } else {
-      console.log('카이카스 지갑을 설치해주세요.');
+      alert('카이카스 지갑을 설치해주세요.');
     }
   };
 

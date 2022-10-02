@@ -13,13 +13,9 @@ import TWITTER from '../../assets/images/twitter-white.png';
 import GITHUB from '../../assets/images/github-white.png';
 import WALLET from '../../assets/images/wallet-large.png';
 import { Link } from 'react-router-dom';
-// import AccountBalanceWalletRoundedIcon from '@mui/icons-material/AccountBalanceWalletRounded';
+import NavbarWalletBtn from '../NavbarWalletBtn';
 
 const Navbar = () => {
-  const [isConnected, setIsConnected] = useRecoilState(connectionState);
-  const [address, setAddress] = useRecoilState(addressState);
-  const [balance, setBalance] = useRecoilState(balanceState);
-  const [network, setNetwork] = useRecoilState(networkState);
   return (
     <div className="navbar-container bg-dark">
       <div className="navbar navbar-dark navbar-expand-lg" data-sticky="top">
@@ -84,20 +80,8 @@ const Navbar = () => {
               </a>
             </div>
           </div>
-          {network == '8217' ? (
-            <div className="network-state-dot network-state-mainnet"></div>
-          ) : (
-            <div className="network-state-dot network-state-testnet"></div>
-          )}
           <div className="navbar-btn-container navbar-btn-collapsed">
-            <Button
-              onClick={() => {
-                alert('connect wallet');
-              }}
-              className="btn-connect-wallet"
-            >
-              <span>connect wallet</span>
-            </Button>
+            <NavbarWalletBtn />
           </div>
           <div
             className="navbar-btn-container navbar-btn-icon-hidden"

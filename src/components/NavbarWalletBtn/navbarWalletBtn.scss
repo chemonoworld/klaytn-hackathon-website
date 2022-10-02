@@ -1,0 +1,18 @@
+@import '../../color.scss';
+
+.network-state-dot {
+  width: 0.35rem;
+  height: 0.35rem;
+  margin: auto;
+  margin-right: 0.5rem;
+  background-color: $white;
+  border-radius: 50%;
+}
+
+.network-state-mainnet {
+  background-color: $green;
+}
+
+.network-state-testnet {
+  background-color: $red;
+}
