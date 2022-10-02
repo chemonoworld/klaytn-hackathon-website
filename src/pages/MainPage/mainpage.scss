@@ -114,6 +114,10 @@ ol {
     color: $pink;
 }
 
+.txt-pink:any-link {
+    color: $pink;
+}
+
 .txt-red {
     cursor: default;
     color: $red;
@@ -185,6 +189,7 @@ ol {
 
 @media (min-width: 480px) and (max-width: 575px) {
     .navbar {
+        width: 100%;
         padding: 1rem 0rem;
     }
 
@@ -202,7 +207,11 @@ ol {
     }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 576px) and (max-width: 768px) {
+    .navbar {
+        width: 100%;
+    }
+
     .container {
         max-width: 540px;
     }

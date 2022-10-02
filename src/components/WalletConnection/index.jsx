@@ -5,10 +5,9 @@ import {
   balanceState,
   connectionState,
   networkState,
-} from '../../modules/connetWallet';
+} from '../../modules/kaikasState';
 import Caver from 'caver-js';
 import './wallet.scss';
-import { AbortedDeferredError } from 'react-router-dom';
 
 const caver = new Caver(window.klaytn);
 

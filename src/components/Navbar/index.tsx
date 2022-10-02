@@ -1,13 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import Button from '../Button';
+import {
+  addressState,
+  balanceState,
+  connectionState,
+  networkState,
+} from '../../modules/kaikasState';
 import './navbar.scss';
 import SBT from '../../assets/images/sbt-h-256.png';
 import DISCORD from '../../assets/images/discord-white.png';
 import TWITTER from '../../assets/images/twitter-white.png';
 import GITHUB from '../../assets/images/github-white.png';
+import WALLET from '../../assets/images/wallet-large.png';
 import { Link } from 'react-router-dom';
+// import AccountBalanceWalletRoundedIcon from '@mui/icons-material/AccountBalanceWalletRounded';
 
 const Navbar = () => {
+  const [isConnected, setIsConnected] = useRecoilState(connectionState);
+  const [address, setAddress] = useRecoilState(addressState);
+  const [balance, setBalance] = useRecoilState(balanceState);
+  const [network, setNetwork] = useRecoilState(networkState);
   return (
     <div className="navbar-container bg-dark">
       <div className="navbar navbar-dark navbar-expand-lg" data-sticky="top">
@@ -16,12 +28,12 @@ const Navbar = () => {
             <img src={SBT} alt="0xSBT" className="navbar-logo-img" />
           </a>
           <div className="navbar-content navbar-collapsed">
-            <div className="navbar-link-container">
+            <div className="navbar-link-container navbar-link-collapsed">
               <Link to="/" className="navbar-link">
                 DA0xSBT
               </Link>
             </div>
-            <div className="navbar-link-container">
+            <div className="navbar-link-container navbar-link-collapsed">
               <Link to="/soul" className="navbar-link">
                 0xSOUL
               </Link>
@@ -72,15 +84,27 @@ const Navbar = () => {
               </a>
             </div>
           </div>
-          <div className="navbar-btn-container">
+          <div className="navbar-btn-container navbar-btn-collapsed">
             <Button
               onClick={() => {
-                alert('click connect wallet');
+                alert('connect wallet');
               }}
               className="btn-connect-wallet"
             >
               <span>connect wallet</span>
             </Button>
+          </div>
+          <div
+            className="navbar-btn-container navbar-btn-icon-hidden"
+            onClick={() => {
+              alert('connect wallet');
+            }}
+          >
+            <img
+              src={WALLET}
+              alt="connect-wallet"
+              className="wallet-icon-img"
+            />
           </div>
         </div>
       </div>
