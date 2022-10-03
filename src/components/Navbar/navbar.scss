@@ -67,7 +67,7 @@ a.navbar-link:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0.8vw auto;
+  margin: 0 0.6vw auto;
 }
 
 .navbar-link-container {
@@ -114,22 +114,6 @@ a.navbar-link:hover {
   cursor: pointer;
   filter: invert(0%) sepia(100%) saturate(4213%) hue-rotate(89deg)
     brightness(104%) contrast(100%);
-}
-
-.network-state-dot {
-  width: 0.35rem;
-  height: 0.35rem;
-  margin: auto;
-  background-color: $white;
-  border-radius: 50%;
-}
-
-.network-state-mainnet {
-  background-color: $green;
-}
-
-.network-state-testnet {
-  background-color: $red;
 }
 
 @media (max-width: 768px) {

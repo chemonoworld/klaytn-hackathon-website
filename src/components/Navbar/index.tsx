@@ -1,11 +1,3 @@
-import { useRecoilState } from 'recoil';
-import Button from '../Button';
-import {
-  addressState,
-  balanceState,
-  connectionState,
-  networkState,
-} from '../../modules/kaikasState';
 import './navbar.scss';
 import SBT from '../../assets/images/sbt-h-256.png';
 import DISCORD from '../../assets/images/discord-white.png';

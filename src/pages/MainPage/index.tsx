@@ -3,7 +3,7 @@ import Button from '../../components/Button';
 import SBT from '../../assets/images/sbt-256.png';
 import SOUL from '../../assets/images/soul-256.png';
 import './mainpage.scss';
-import { test } from '../../modules/useCaver';
+// import { test } from '../../modules/useCaver';
 import { Link, useNavigate } from 'react-router-dom';
 
 type mainContentProps = {
@@ -17,7 +17,6 @@ const MainPage = ({ mainContent }: mainContentProps) => {
   const [isJoystickTrans, setIsJoystickTrans] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    test();
     if (!isJoystickTrans) {
       const joystick = document.querySelector('.btn-joystick');
       joystick?.setAttribute('class', 'btn-joystick btn-joystick-clicked');

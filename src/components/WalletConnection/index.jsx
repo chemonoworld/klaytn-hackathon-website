@@ -1,4 +1,4 @@
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilTransaction_UNSTABLE } from 'recoil';
 import { useEffect } from 'react';
 import {
   addressState,
@@ -22,26 +22,29 @@ const WalletConnection = () => {
     setNetworkInfo();
   }, []);
 
-  let detectionTimer = setTimeout(() => {
+  const initRender = async () => {
     const { klaytn } = window;
-    if (
-      klaytn.selectedAddress !== '' &&
-      klaytn.selectedAddress !== undefined &&
-      klaytn.selectedAddress !== address
-    ) {
-      console.log('account changed');
+    if (klaytn) {
+      try {
+        const enable = await klaytn.enable();
+        enable !== undefined ? setIsConnected(true) : setIsConnected(false);
+        // setAccountInfo();
+        await klaytn.on('accountsChanged', () => {
+          console.log('account changed');
+        });
+        await klaytn.on('networkChanged', () => {
+          console.log('network changed');
+          klaytn.selectedAddress === undefined
+            ? setNetwork('')
+            : setNetwork(klaytn.networkVersion);
+        });
+      } catch (error) {
+        alert('로그인이 실패하였습니다.');
+      }
+    } else {
+      alert('카이카스 지갑을 설치해주세요.');
     }
-    if (
-      klaytn.networkVersion !== '' &&
-      klaytn.networkVersion !== undefined &&
-      klaytn.networkVersion !== network
-    ) {
-      console.log('network changed');
-    }
-    clearTimeout(detectionTimer);
-    // klaytn.on('accountsChanged', () => console.log('account changed'));
-    // klaytn.on('networkChanged', () => console.log('network changed'));
-  }, 1000);
+  };
 
   const loadAccountInfo = async () => {
     const { klaytn } = window;
@@ -62,6 +65,9 @@ const WalletConnection = () => {
   const setAccountInfo = async () => {
     const { klaytn } = window;
     if (klaytn === undefined) return;
+    klaytn.selectedAddress === undefined
+      ? setNetwork('')
+      : setNetwork(klaytn.networkVersion);
     const timer = setTimeout(async () => {
       const account = klaytn.selectedAddress;
       if (account !== '' && account !== undefined) {
@@ -71,19 +77,21 @@ const WalletConnection = () => {
         setBalance(Math.floor(balance * 1000000) / 1000000);
         console.log('address : ', account);
         console.log('balance : ', balance);
-        console.log('network : ', network);
         clearTimeout(timer);
       }
     }, 1000);
   };
 
-  const setNetworkInfo = () => {
+  const setNetworkInfo = async () => {
     const { klaytn } = window;
     if (klaytn === undefined) return;
-
-    setNetwork(klaytn.networkVersion);
+    klaytn.selectedAddress === undefined
+      ? setNetwork('')
+      : setNetwork(klaytn.networkVersion);
     klaytn.on('networkChanged', async () => {
-      setNetworkInfo(klaytn.networkVersion);
+      klaytn.selectedAddress === undefined
+        ? setNetwork('')
+        : setNetwork(klaytn.networkVersion);
       const account = klaytn.selectedAddress;
       const balancePeb = await caver.klay.getBalance(account);
       const balance = caver.utils.fromPeb(balancePeb, 'KLAY');

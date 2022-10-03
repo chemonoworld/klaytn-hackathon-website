@@ -16,3 +16,47 @@
 .network-state-testnet {
   background-color: $red;
 }
+
+.expand-icon-container {
+  margin-left: 0.3rem;
+  max-width: 1rem;
+  max-height: 1rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  justify-content: center;
+}
+
+.expand-icon {
+  position: relative;
+  left: -0.25rem;
+  top: -0.25rem;
+  color: $pink;
+}
+
+.expand-icon-more {
+  animation: expand-icon-to-more 1s ease forwards;
+}
+
+.expand-icon-less {
+  animation: expand-icon-to-less 1s ease forwards;
+}
+
+@keyframes expand-icon-to-more {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes expand-icon-to-less {
+  from {
+    transform: rotate(180deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
