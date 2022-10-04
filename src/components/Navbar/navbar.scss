@@ -105,15 +105,8 @@ a.navbar-link:hover {
   margin-right: 0.25rem;
 }
 
-.wallet-icon-img {
+.navbar-btn-icon-hidden {
   display: none;
-  height: 28px;
-}
-
-.wallet-icon-img:hover {
-  cursor: pointer;
-  filter: invert(0%) sepia(100%) saturate(4213%) hue-rotate(89deg)
-    brightness(104%) contrast(100%);
 }
 
 @media (max-width: 768px) {
@@ -121,23 +114,11 @@ a.navbar-link:hover {
     display: none;
   }
 
-  .wallet-icon-img {
-    position: relative;
-    margin: 0 auto;
+  .navbar-btn-icon-hidden {
     display: flex;
-    // left: -28px;
   }
 
   .navbar-btn-collapsed {
     display: none;
-  }
-}
-
-@media (max-width: 576px) {
-  .wallet-icon-img {
-    position: relative;
-    margin-left: 2rem;
-    display: flex;
-    left: 0px;
   }
 }

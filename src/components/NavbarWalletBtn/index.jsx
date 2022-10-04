@@ -4,22 +4,26 @@ import {
   addressState,
   balanceState,
   connectionState,
+  ddExpansionState,
   networkState,
 } from '../../modules/kaikasState';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import COPY from '../../assets/images/copy-24.png';
+// import COPY from '../../assets/images/copy-24.png';
 import './navbarWalletBtn.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import DropdownMenu from '../DropdownMenu';
+import WALLET from '../../assets/images/wallet-large.png';
 
-const NavbarWalletBtn = () => {
+const NavbarWalletBtn = props => {
   const [isConnected, setIsConnected] = useRecoilState(connectionState);
   const [address, setAddress] = useRecoilState(addressState);
   const [balance, setBalance] = useRecoilState(balanceState);
   const [network, setNetwork] = useRecoilState(networkState);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useRecoilState(ddExpansionState);
 
   const handleClick = () => {
     loadAccountInfo();
+    setNetworkInfo();
   };
   const handleClickAfterConnected = () => {
     const expandEl = document.getElementsByClassName('expand-icon');
@@ -34,7 +38,6 @@ const NavbarWalletBtn = () => {
       expandEl[0].classList.toggle('expand-icon-less');
     }
     isExpanded === true ? setIsExpanded(false) : setIsExpanded(true);
-    console.log(isExpanded);
   };
   const handleCopyAddress = () => {
     navigator.clipboard.writeText(address);
@@ -42,12 +45,18 @@ const NavbarWalletBtn = () => {
   const handleClickDropdown = e => {
     e.stopPropagation();
   };
+  const handleDisconnect = () => {
+    setIsConnected(false);
+    setIsExpanded(false);
+    setAddress('');
+    setNetwork('');
+  };
   const loadAccountInfo = async () => {
     const { klaytn } = window;
     if (klaytn) {
       try {
-        const result = await klaytn.enable();
-        result !== undefined ? setIsConnected(true) : setIsConnected(false);
+        const isEnable = await klaytn.enable();
+        isEnable !== undefined ? setIsConnected(true) : setIsConnected(false);
         setAccountInfo();
         klaytn.on('accountsChanged', () => setAccountInfo());
       } catch (error) {
@@ -71,71 +80,84 @@ const NavbarWalletBtn = () => {
       }
     }, 1000);
   };
+  const setNetworkInfo = async () => {
+    const { klaytn } = window;
+    if (klaytn === undefined) return;
+    klaytn.selectedAddress === undefined
+      ? setNetwork('')
+      : setNetwork(klaytn.networkVersion);
+    klaytn.on('networkChanged', async () => {
+      klaytn.selectedAddress === undefined
+        ? setNetwork('')
+        : setNetwork(klaytn.networkVersion);
+      const account = klaytn.selectedAddress;
+      const balancePeb = await caver.klay.getBalance(account);
+      const balance = caver.utils.fromPeb(balancePeb, 'KLAY');
+      setBalance(Math.floor(balance * 1000000) / 1000000);
+    });
+  };
   return (
-    <Button
-      onClick={() => {
-        klaytn.selectedAddress === undefined
-          ? handleClick()
-          : handleClickAfterConnected();
-      }}
-      className="btn-connect-wallet"
-    >
-      {network == '8217' ? (
-        <div className="network-state-dot network-state-mainnet"></div>
-      ) : (
-        <div className="network-state-dot network-state-testnet"></div>
-      )}
-      {isConnected ? (
-        <>
-          <span className="txt-white font-unbounded-medium">
-            {address
-              ? `${address.slice(0, 6)}...${address.slice(-4)}`
-              : 'Connecting...'}
-          </span>
-          <div className="expand-icon-container">
-            <ExpandMoreIcon className="expand-icon txt-hover-cyan" />
-          </div>
+    <>
+      {props.isSmallIcon === true ? (
+        <div
+          onClick={() => {
+            klaytn.selectedAddress === undefined || isConnected == false
+              ? handleClick()
+              : handleClickAfterConnected();
+          }}
+          className="small-btn-connect-wallet"
+        >
+          <img src={WALLET} className="wallet-icon-img" alt="wallet" />
           {isExpanded === true && (
-            <div className="dd-wrapper" onClick={handleClickDropdown}>
-              <div className="dd-container">
-                <div className="dd-menu">
-                  <span>
-                    network:
-                    {network == '8217' ? (
-                      <span className="dd-txt-green"> mainnet</span>
-                    ) : network == '1001' ? (
-                      <span className="dd-txt-red"> testnet</span>
-                    ) : (
-                      <span className="dd-txt-red"> invalid</span>
-                    )}
-                  </span>
-                </div>
-                <div className="dd-menu" onClick={handleCopyAddress}>
-                  <span className="dd-txt-common">Copy address</span>
-                  <img src={COPY} className="copy-icon" alt="copy"></img>
-                </div>
-                <div className="dd-menu">
-                  <span className="dd-link-wrapper">
-                    <a
-                      href={`https://scope.klaytn.com/account/${address}?tabId=approvals&sub=kip7`}
-                      target="_blank"
-                      className="dd-link txt-deco-none dd-txt-common"
-                    >
-                      View on explorer
-                    </a>
-                  </span>
-                </div>
-                <div className="dd-menu">
-                  <span className="dd-txt-common">Disconnect</span>
-                </div>
-              </div>
-            </div>
+            <DropdownMenu
+              handleClickDropdown={handleClickDropdown}
+              handleCopyAddress={handleCopyAddress}
+              handleDisconnect={handleDisconnect}
+              address={address}
+              network={network}
+            />
           )}
-        </>
+        </div>
       ) : (
-        <span>connect wallet</span>
+        <Button
+          onClick={() => {
+            klaytn.selectedAddress === undefined || isConnected == false
+              ? handleClick()
+              : handleClickAfterConnected();
+          }}
+          className="btn-connect-wallet"
+        >
+          {network == '8217' ? (
+            <div className="network-state-dot network-state-mainnet"></div>
+          ) : (
+            <div className="network-state-dot network-state-testnet"></div>
+          )}
+          {isConnected ? (
+            <>
+              <span className="txt-white font-unbounded-medium">
+                {address
+                  ? `${address.slice(0, 6)}...${address.slice(-4)}`
+                  : 'Connecting...'}
+              </span>
+              <div className="expand-icon-container">
+                <ExpandMoreIcon className="expand-icon txt-hover-cyan" />
+              </div>
+              {isExpanded === true && (
+                <DropdownMenu
+                  handleClickDropdown={handleClickDropdown}
+                  handleCopyAddress={handleCopyAddress}
+                  handleDisconnect={handleDisconnect}
+                  address={address}
+                  network={network}
+                />
+              )}
+            </>
+          ) : (
+            <span>connect wallet</span>
+          )}
+        </Button>
       )}
-    </Button>
+    </>
   );
 };
 

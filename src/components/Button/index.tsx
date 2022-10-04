@@ -2,9 +2,12 @@ import React from 'react';
 import './button.scss';
 type ReactText = string | number;
 type ReactChild = React.ReactNode | ReactText;
+interface OnClick {
+  (event: React.MouseEvent<HTMLDivElement>): void;
+}
 type ButtonParams = {
   children: ReactChild;
-  onClick: any;
+  onClick: OnClick;
   className: string;
 };
 

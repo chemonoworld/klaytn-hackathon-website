@@ -4,6 +4,10 @@
   position: relative;
 }
 
+.small-btn-connect-wallet {
+  position: relative;
+}
+
 .network-state-dot {
   width: 0.35rem;
   height: 0.35rem;
@@ -65,86 +69,27 @@
   }
 }
 
-.dd-container {
-  cursor: default;
-  display: flex;
-  flex-direction: column;
-  font-family: 'arcade-classic';
-  color: $white;
-  background-color: $black;
-  width: 180.5px;
-  height: 8rem;
-  border-style: solid;
-  border-color: $white;
-  border-width: 1px;
-  border-radius: 0.25rem;
-  position: absolute;
-  top: 3.6rem;
-  left: 0rem;
-  padding: 1rem 0rem 1rem 0rem;
-  font-size: 1.1rem;
-
-  animation: fadeIn 1s ease;
+.wallet-icon-img {
+  height: 28px;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.dd-menu {
-  display: flex;
-  justify-content: center;
-  height: 2rem;
+.wallet-icon-img:hover {
   cursor: pointer;
-  padding: 0.25rem 0.2rem 0.25rem 0.2rem;
+  filter: invert(0%) sepia(100%) saturate(4213%) hue-rotate(89deg)
+    brightness(104%) contrast(100%);
 }
 
-.dd-menu:hover {
-  background-color: $gray-tp;
+@media (max-width: 768px) {
+  .wallet-icon-img {
+    position: relative;
+    margin: 0 auto;
+  }
 }
 
-.dd-txt-green {
-  color: $green;
-}
-
-.dd-txt-red {
-  color: $red;
-}
-
-.dd-txt-common {
-  line-height: 1.5rem;
-}
-
-.dd-txt-common:hover {
-  color: $white;
-}
-
-.dd-txt-red:hover {
-  color: $cyan;
-}
-
-.dd-txt-pink {
-  color: $pink;
-}
-
-.dd-txt-pink:hover {
-  color: $cyan;
-}
-
-.dd-link-wrapper {
-  line-height: 1.5rem;
-}
-
-.copy-icon {
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: 0.5rem;
-  width: 1rem;
-  height: 1rem;
+@media (max-width: 576px) {
+  .wallet-icon-img {
+    position: relative;
+    margin-left: 2rem;
+    left: 0px;
+  }
 }

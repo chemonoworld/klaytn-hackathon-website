@@ -1,7 +1,4 @@
-import { atom, useRecoilState } from 'recoil';
-import Caver from 'caver-js';
-
-const caver = new Caver(window.klaytn);
+import { atom } from 'recoil';
 
 export const addressState = atom({
   key: 'address',
@@ -20,5 +17,10 @@ export const networkState = atom({
 
 export const connectionState = atom({
   key: 'isConnected',
+  default: false,
+});
+
+export const ddExpansionState = atom({
+  key: 'isExpanded',
   default: false,
 });

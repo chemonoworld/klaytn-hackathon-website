@@ -73,19 +73,10 @@ const Navbar = () => {
             </div>
           </div>
           <div className="navbar-btn-container navbar-btn-collapsed">
-            <NavbarWalletBtn />
+            <NavbarWalletBtn isSmallIcon={false} />
           </div>
-          <div
-            className="navbar-btn-container navbar-btn-icon-hidden"
-            onClick={() => {
-              alert('connect wallet');
-            }}
-          >
-            <img
-              src={WALLET}
-              alt="connect-wallet"
-              className="wallet-icon-img"
-            />
+          <div className="navbar-btn-container navbar-btn-icon-hidden">
+            <NavbarWalletBtn isSmallIcon={true} />
           </div>
         </div>
       </div>
