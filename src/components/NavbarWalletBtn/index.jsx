@@ -7,13 +7,16 @@ import {
   networkState,
 } from '../../modules/kaikasState';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import COPY from '../../assets/images/copy-24.png';
 import './navbarWalletBtn.scss';
+import { useState } from 'react';
 
 const NavbarWalletBtn = () => {
   const [isConnected, setIsConnected] = useRecoilState(connectionState);
   const [address, setAddress] = useRecoilState(addressState);
   const [balance, setBalance] = useRecoilState(balanceState);
   const [network, setNetwork] = useRecoilState(networkState);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
     loadAccountInfo();
@@ -30,6 +33,14 @@ const NavbarWalletBtn = () => {
       expandEl[0].classList.toggle('expand-icon-more');
       expandEl[0].classList.toggle('expand-icon-less');
     }
+    isExpanded === true ? setIsExpanded(false) : setIsExpanded(true);
+    console.log(isExpanded);
+  };
+  const handleCopyAddress = () => {
+    navigator.clipboard.writeText(address);
+  };
+  const handleClickDropdown = e => {
+    e.stopPropagation();
   };
   const loadAccountInfo = async () => {
     const { klaytn } = window;
@@ -84,6 +95,42 @@ const NavbarWalletBtn = () => {
           <div className="expand-icon-container">
             <ExpandMoreIcon className="expand-icon txt-hover-cyan" />
           </div>
+          {isExpanded === true && (
+            <div className="dd-wrapper" onClick={handleClickDropdown}>
+              <div className="dd-container">
+                <div className="dd-menu">
+                  <span>
+                    network:
+                    {network == '8217' ? (
+                      <span className="dd-txt-green"> mainnet</span>
+                    ) : network == '1001' ? (
+                      <span className="dd-txt-red"> testnet</span>
+                    ) : (
+                      <span className="dd-txt-red"> invalid</span>
+                    )}
+                  </span>
+                </div>
+                <div className="dd-menu" onClick={handleCopyAddress}>
+                  <span className="dd-txt-common">Copy address</span>
+                  <img src={COPY} className="copy-icon" alt="copy"></img>
+                </div>
+                <div className="dd-menu">
+                  <span className="dd-link-wrapper">
+                    <a
+                      href={`https://scope.klaytn.com/account/${address}?tabId=approvals&sub=kip7`}
+                      target="_blank"
+                      className="dd-link txt-deco-none dd-txt-common"
+                    >
+                      View on explorer
+                    </a>
+                  </span>
+                </div>
+                <div className="dd-menu">
+                  <span className="dd-txt-common">Disconnect</span>
+                </div>
+              </div>
+            </div>
+          )}
         </>
       ) : (
         <span>connect wallet</span>
