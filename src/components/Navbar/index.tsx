@@ -12,9 +12,9 @@ const Navbar = () => {
     <div className="navbar-container bg-dark">
       <div className="navbar navbar-dark navbar-expand-lg" data-sticky="top">
         <div className="container">
-          <a className="navbar-brand fade-page" href="/">
+          <Link className="navbar-brand fade-page" to="/">
             <img src={SBT} alt="0xSBT" className="navbar-logo-img" />
-          </a>
+          </Link>
           <div className="navbar-content navbar-collapsed">
             <div className="navbar-link-container navbar-link-collapsed">
               <Link to="/" className="navbar-link">

@@ -43,9 +43,12 @@ const MainPage = () => {
     }, 500);
     startJoystickAnim();
   };
-  const handleClickMainBtns = () => {
-    alert('Go to rating');
-    navigate('/rating');
+  const handleClickMainBtns = (btnType: MAIN_BUTTON_TYPE) => {
+    if (btnType == MAIN_BUTTON_TYPE.LEARN_MORE) {
+      window.open('https://dorahacks.io/buidl/3364', '_blank');
+    } else {
+      navigate('/rating');
+    }
   };
   return (
     <div className="root-container">
@@ -113,7 +116,12 @@ const MainPage = () => {
       <div className="btn-box">
         <div className="container">
           <div className="btn-container">
-            <Button onClick={handleClickMainBtns} className="btn-main-section">
+            <Button
+              onClick={() => {
+                handleClickMainBtns(MAIN_BUTTON_TYPE.LEARN_MORE);
+              }}
+              className="btn-main-section"
+            >
               <div className="main-section-btn-txt">
                 <span>Learn more</span>
               </div>
@@ -121,7 +129,9 @@ const MainPage = () => {
           </div>
           <div className="btn-container">
             <Button
-              onClick={handleClickMainBtns}
+              onClick={() => {
+                handleClickMainBtns(MAIN_BUTTON_TYPE.LAUNCH_APP);
+              }}
               className="btn-main-section btn-white"
             >
               <div className="main-section-btn-txt">

@@ -4,6 +4,7 @@ import SBT from '../../assets/images/sbt-256.png';
 import SOUL from '../../assets/images/soul-256.png';
 import '../MainPage/mainpage.scss';
 import { Link } from 'react-router-dom';
+import { MAIN_BUTTON_TYPE } from '../../enums/mainButtonType';
 
 const SoulPage = () => {
   const [isLogoTranslate, setIsLogoTranslate] = useState(false);
@@ -40,8 +41,13 @@ const SoulPage = () => {
     }, 500);
     startJoystickAnim();
   };
-  const handleClickMainBtns = () => {
-    alert('click button');
+  const handleClickMainBtns = (btnType: MAIN_BUTTON_TYPE) => {
+    if (btnType === MAIN_BUTTON_TYPE.KLAIM_YOUR_SOUL) {
+      alert('klaim your soul');
+    } else {
+      alert('download extension');
+      // window.open('', '_blank');
+    }
   };
   return (
     <div className="root-container">
@@ -100,7 +106,9 @@ const SoulPage = () => {
         <div className="container">
           <div className="btn-container">
             <Button
-              onClick={handleClickMainBtns}
+              onClick={() => {
+                handleClickMainBtns(MAIN_BUTTON_TYPE.KLAIM_YOUR_SOUL);
+              }}
               className="btn-main-section btn-red"
             >
               <div className="main-section-btn-txt">
@@ -110,7 +118,9 @@ const SoulPage = () => {
           </div>
           <div className="btn-container">
             <Button
-              onClick={handleClickMainBtns}
+              onClick={() => {
+                handleClickMainBtns(MAIN_BUTTON_TYPE.DOWNLOAD_EXTENSION);
+              }}
               className="btn-main-section btn-white"
             >
               <div className="main-section-btn-txt">
