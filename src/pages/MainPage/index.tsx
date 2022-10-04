@@ -5,14 +5,9 @@ import SOUL from '../../assets/images/soul-256.png';
 import './mainpage.scss';
 // import { test } from '../../modules/useCaver';
 import { Link, useNavigate } from 'react-router-dom';
+import { MAIN_BUTTON_TYPE } from '../../enums/mainButtonType';
 
-type mainContentProps = {
-  // true : SBT false: SOUL
-  mainContent: boolean;
-};
-
-const MainPage = ({ mainContent }: mainContentProps) => {
-  const [SBTorSOUL, setSBTorSOUL] = useState(mainContent);
+const MainPage = () => {
   const [isLogoTranslate, setIsLogoTranslate] = useState(false);
   const [isJoystickTrans, setIsJoystickTrans] = useState(false);
   const navigate = useNavigate();
@@ -57,11 +52,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
       <section className="main-section">
         <div className="container main-section-container">
           <div className="main-section-content main-logo-container">
-            {SBTorSOUL === true ? (
-              <img src={SBT} className="main-logo logo-sbt" alt="logo" />
-            ) : (
-              <img src={SOUL} className="main-logo logo-sbt" alt="logo" />
-            )}
+            <img src={SBT} className="main-logo logo-sbt" alt="logo" />
             <Link to="/soul">
               <div onClick={handleSlide} className="btn-joystick"></div>
             </Link>

@@ -15,8 +15,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<MainPage mainContent={true} />} />
-            <Route path="/soul" element={<SoulPage mainContent={false} />} />
+            <Route index element={<MainPage />} />
+            <Route path="/soul" element={<SoulPage />} />
             <Route path="/rating" element={<RatingPage />} />
           </Route>
         </Routes>

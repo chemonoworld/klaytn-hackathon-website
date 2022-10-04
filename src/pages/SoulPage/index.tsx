@@ -5,13 +5,7 @@ import SOUL from '../../assets/images/soul-256.png';
 import '../MainPage/mainpage.scss';
 import { Link } from 'react-router-dom';
 
-type mainContentProps = {
-  // true : SBT false: SOUL
-  mainContent: boolean;
-};
-
-const MainPage = ({ mainContent }: mainContentProps) => {
-  const [SBTorSOUL, setSBTorSOUL] = useState(mainContent);
+const SoulPage = () => {
   const [isLogoTranslate, setIsLogoTranslate] = useState(false);
   const [isJoystickTrans, setIsJoystickTrans] = useState(false);
   useEffect(() => {
@@ -54,11 +48,7 @@ const MainPage = ({ mainContent }: mainContentProps) => {
       <section className="main-section">
         <div className="container main-section-container">
           <div className="main-section-content main-logo-container">
-            {SBTorSOUL === true ? (
-              <img src={SBT} className="main-logo logo-sbt" alt="logo" />
-            ) : (
-              <img src={SOUL} className="main-logo logo-sbt" alt="logo" />
-            )}
+            <img src={SOUL} className="main-logo logo-sbt" alt="logo" />
             <Link to="/">
               <div onClick={handleSlide} className="btn-joystick"></div>
             </Link>
@@ -134,4 +124,4 @@ const MainPage = ({ mainContent }: mainContentProps) => {
   );
 };
 
-export default MainPage;
+export default SoulPage;
