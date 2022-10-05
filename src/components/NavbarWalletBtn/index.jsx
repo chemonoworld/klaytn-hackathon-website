@@ -50,18 +50,9 @@ const NavbarWalletBtn = props => {
       const timer = setTimeout(() => {
         span?.removeChild(txtNode);
         span?.appendChild(ogChild);
-        // clearTimeout(timer);
+        clearTimeout(timer);
       }, 150);
     });
-    // const ogChild = txtSpan?.lastChild;
-    // const txtNode = document.createTextNode('COPIED!!!');
-    // txtSpan?.removeChild(ogChild);
-    // txtSpan?.appendChild(txtNode);
-    // const timer = setTimeout(() => {
-    //   txtSpan?.removeChild(txtNode);
-    //   txtSpan?.appendChild(ogChild);
-    //   clearTimeout(timer);
-    // }, 1000);
   };
   const handleClickDropdown = e => {
     e.stopPropagation();
