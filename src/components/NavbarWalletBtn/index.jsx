@@ -41,6 +41,16 @@ const NavbarWalletBtn = props => {
   };
   const handleCopyAddress = () => {
     navigator.clipboard.writeText(address);
+    const txtSpan = document.getElementById('txt-copy-address');
+    const ogChild = txtSpan?.lastChild;
+    const txtNode = document.createTextNode('COPIED!');
+    txtSpan?.removeChild(ogChild);
+    txtSpan?.appendChild(txtNode);
+    const timer = setTimeout(() => {
+      txtSpan?.removeChild(txtNode);
+      txtSpan?.appendChild(ogChild);
+      clearTimeout(timer);
+    }, 1000);
   };
   const handleClickDropdown = e => {
     e.stopPropagation();
@@ -115,6 +125,7 @@ const NavbarWalletBtn = props => {
               handleDisconnect={handleDisconnect}
               address={address}
               network={network}
+              balance={balance}
             />
           )}
         </div>
@@ -149,6 +160,7 @@ const NavbarWalletBtn = props => {
                   handleDisconnect={handleDisconnect}
                   address={address}
                   network={network}
+                  balance={balance}
                 />
               )}
             </>

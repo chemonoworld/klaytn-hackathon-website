@@ -17,8 +17,20 @@ const DropdownMenu = props => {
             )}
           </span>
         </div>
+        <div className="dd-menu">
+          <span className="dd-txt-common">
+            0xSOUL:
+            {props.balance > 0 ? (
+              <span className="txt-green"> {props.balance}</span>
+            ) : (
+              <span className="txt-red"> 0</span>
+            )}
+          </span>
+        </div>
         <div className="dd-menu" onClick={props.handleCopyAddress}>
-          <span className="dd-txt-common">Copy address</span>
+          <span id="txt-copy-address" className="dd-txt-common">
+            Copy address
+          </span>
           <img src={COPY} className="copy-icon" alt="copy"></img>
         </div>
         <div className="dd-menu">

@@ -8,28 +8,7 @@
   color: $white;
   background-color: $black;
   width: 180.5px;
-  height: 8rem;
-  border-style: solid;
-  border-color: $white;
-  border-width: 1px;
-  border-radius: 0.25rem;
-  position: absolute;
-  top: 3.6rem;
-  right: 0rem;
-  padding: 1rem 0rem 1rem 0rem;
-  font-size: 1.1rem;
-  animation: fadeIn 1s ease;
-}
-
-.small-dd-container {
-  cursor: default;
-  display: flex;
-  flex-direction: column;
-  font-family: 'arcade-classic';
-  color: $white;
-  background-color: $black;
-  width: 180.5px;
-  height: 8rem;
+  height: 10rem;
   border-style: solid;
   border-color: $white;
   border-width: 1px;
