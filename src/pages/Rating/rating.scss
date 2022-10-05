@@ -13,6 +13,10 @@ a:hover {
   color: $pink;
 }
 
+ol > li > span {
+  float: left;
+}
+
 .root-container {
   background-color: black;
   min-height: 100vh;
@@ -20,6 +24,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow-x: auto;
 
   .rating-table-desc {
     border: solid;
@@ -45,47 +50,109 @@ a:hover {
       margin-bottom: 25px;
     }
 
-    .table {
-      display: table;
-      table-layout: auto;
-      width: 100%;
-    }
+    @media (min-width: 0px) {
+      .table {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
 
-    .heading {
-      display: table-row;
-      text-align: center;
-      line-height: 50px;
-    }
+      .heading {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        line-height: 50px;
+      }
 
-    .row {
-      display: table-row;
-      text-align: center;
-      line-height: 10px;
-    }
+      .row {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        line-height: 50px;
+      }
 
-    .cell {
-      display: table-cell;
-      border-bottom: solid;
-      border-width: thin;
-      padding-left: 5px;
-      padding-right: 5px;
-    }
+      .cell {
+        display: flex;
+        flex-direction: column;
+        text-align: auto;
+        border-bottom: solid;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-bottom: 5px;
+      }
 
-    .content {
-      display: table-cell;
-      border-bottom: solid;
-      border-width: thin;
-      font-size: calc(8px + 2vmin);
-      padding-left: 5px;
-      padding-right: 5px;
-    }
+      .content {
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid;
+        border-width: thin;
+        text-align: center;
+        font-size: calc(5px + 2vmin);
+        padding-left: 5px;
+        padding-right: 5px;
+      }
 
-    .input {
-      width: 150px;
-      height: 20px;
-      margin: 3px 0;
-      outline: none;
-      text-align: center;
+      .badge {
+        width: 30%;
+        height: 30%;
+        margin: 0 auto;
+        object-fit: cover;
+      }
+
+      .input {
+        width: 150px;
+        height: 20px;
+        margin: 3px 0;
+        outline: none;
+        text-align: center;
+      }
+    }
+    @media (min-width: 768px) {
+      .table {
+        display: table;
+        table-layout: auto;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      .heading {
+        display: table-row;
+        text-align: center;
+        line-height: 50px;
+      }
+
+      .row {
+        display: table-row;
+        text-align: center;
+        line-height: 10px;
+      }
+
+      .cell {
+        display: table-cell;
+        border-bottom: solid;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .content {
+        display: table-cell;
+        border-bottom: solid;
+        border-width: thin;
+        font-size: calc(8px + 2vmin);
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .input {
+        width: 150px;
+        height: 20px;
+        margin: 3px 0;
+        outline: none;
+        text-align: center;
+      }
     }
   }
 }
