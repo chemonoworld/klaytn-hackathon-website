@@ -1,8 +1,10 @@
 import * as Caver from 'caver-js/index';
-import dotenv from 'dotenv';
-dotenv.config();
+import { ADDRESS } from '../Contracts/address';
+import sbtABI from '../Contracts/abi/sbt.json';
+import soulABI from '../Contracts/abi/sbt.json';
 
 const FIRST_PRESALE_ADDRESS = '0x2af78D92D7108A2b46188b947482891f34eb2E29';
+
 const CHAIN_ID = '1001'; //MAINNET 8217 TESTNET 1001
 const option = {
   headers: [
@@ -21,10 +23,9 @@ const caverForCall = new Caver(
     option,
   ),
 );
-const soulContract = new caverForCall.contract(
-  JSON.parse(process.env.REACT_APP_SOUL_ABI),
-  process.env.REACT_APP_SOUL_ADDR,
-);
+
+const soulContract = new caverForCall.contract(sbtABI, ADDRESS.sbt);
+const soulContractVer2 = new caverForCall.contract(sbtABI, ADDRESS.soul);
 
 //call
 const test = async () => {
@@ -34,8 +35,73 @@ const test = async () => {
   return count;
 };
 
+const getSoulBalance = async address => {
+  const balance = await soulContractVer2.methods.balanceOf(address).call();
+  return balance;
+};
+
+// get dao address and length 3 vote array, call vote function
+const daoVote = async (daoAddress, voteArray) => {
+  const { klaytn } = window;
+  if (klaytn === undefined) {
+    alert('카이카스 지갑을 설치해주세요.');
+    return;
+  }
+  if (klaytn.selectedAddress === undefined) {
+    alert('지갑을 연결해주세요.');
+    return;
+  }
+  //should add 'try-catch' // 지갑 연결한 상태로 크롬 익스텐션 카이카스지갑에서 연결해제할 경우 예외처리
+  const caver = new Caver(klaytn);
+  const walletAddress = await klaytn.enable();
+  const from = walletAddress[0]; // 이거 enable로 고쳐야할듯?
+  const contractAddress = ADDRESS.sbt;
+  const gas = 3000000;
+
+  const data = caver.klay.abi.encodeFunctionCall(
+    {
+      name: 'vote',
+      type: 'function',
+      inputs: [
+        { type: 'address', name: 'dao' },
+        { type: 'uint256[3]', name: 'voteScore' },
+      ],
+    },
+    [daoAddress, voteArray],
+  );
+  caver.klay
+    .sendTransaction({
+      type: 'SMART_CONTRACT_EXECUTION',
+      from: from,
+      to: contractAddress,
+      data: data,
+      gas: gas,
+      value: caver.utils.toPeb(0, 'KLAY'),
+    })
+    .on('transactionHash', transactionHash => {
+      console.log('txHash', transactionHash);
+    })
+    .on('receipt', receipt => {
+      console.log('receipt', receipt);
+    })
+    .on('error', error => {
+      console.log('error', error);
+      alert(error);
+    });
+};
+
 const nftBalanceOf = async address => {
   const result = await soulContract.methods.balanceOf(address).call();
+  return result;
+};
+
+const viewDaos = async () => {
+  const result = await soulContract.methods.viewDaos().call();
+  return result;
+};
+
+const viewScore = async address => {
+  const result = await soulContract.methods.viewScore(address).call();
   return result;
 };
 
@@ -88,4 +154,4 @@ const buy_test = async nickname => {
     });
 };
 
-export { test, buy_test, nftBalanceOf };
+export { getSoulBalance, buy_test, nftBalanceOf, viewDaos, viewScore, daoVote };

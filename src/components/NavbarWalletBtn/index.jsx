@@ -8,11 +8,11 @@ import {
   networkState,
 } from '../../modules/kaikasState';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import COPY from '../../assets/images/copy-24.png';
 import './navbarWalletBtn.scss';
 import { useEffect, useState } from 'react';
 import DropdownMenu from '../DropdownMenu';
 import WALLET from '../../assets/images/wallet-large.png';
+import { getSoulBalance } from '../../modules/useCaver';
 
 const NavbarWalletBtn = props => {
   const [isConnected, setIsConnected] = useRecoilState(connectionState);
@@ -85,9 +85,11 @@ const NavbarWalletBtn = props => {
       const account = klaytn.selectedAddress;
       if (account !== '' && account !== undefined) {
         setAddress(account);
-        const balancePeb = await caver.klay.getBalance(account);
-        const balance = caver.utils.fromPeb(balancePeb, 'KLAY');
-        setBalance(Math.floor(balance * 1000000) / 1000000);
+        // const balancePeb = await caver.klay.getBalance(account);
+        // const balance = caver.utils.fromPeb(balancePeb, 'KLAY');
+        // setBalance(Math.floor(balance * 1000000) / 1000000);
+        const soulBalance = await getSoulBalance(account);
+        setBalance(soulBalance);
         clearTimeout(timer);
       }
     }, 1000);
@@ -103,9 +105,11 @@ const NavbarWalletBtn = props => {
         ? setNetwork('')
         : setNetwork(klaytn.networkVersion);
       const account = klaytn.selectedAddress;
-      const balancePeb = await caver.klay.getBalance(account);
-      const balance = caver.utils.fromPeb(balancePeb, 'KLAY');
-      setBalance(Math.floor(balance * 1000000) / 1000000);
+      // const balancePeb = await caver.klay.getBalance(account);
+      // const balance = caver.utils.fromPeb(balancePeb, 'KLAY');
+      // setBalance(Math.floor(balance * 1000000) / 1000000);
+      const soulBalance = await getSoulBalance(account);
+      setBalance(soulBalance);
     });
   };
   return (

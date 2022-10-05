@@ -10,7 +10,7 @@ import {
   viewDaos,
   viewScore,
   daoVote,
-} from '../../modules/useCaver2';
+} from '../../modules/useCaver';
 
 interface IRating {
   dao: string;

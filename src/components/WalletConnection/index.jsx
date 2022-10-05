@@ -8,6 +8,7 @@ import {
 } from '../../modules/kaikasState';
 import Caver from 'caver-js';
 import './wallet.scss';
+import { getSoulBalance } from '../../modules/useCaver';
 
 const caver = new Caver(window.klaytn);
 
@@ -21,30 +22,6 @@ const WalletConnection = () => {
     loadAccountInfo();
     setNetworkInfo();
   }, []);
-
-  const initRender = async () => {
-    const { klaytn } = window;
-    if (klaytn) {
-      try {
-        const enable = await klaytn.enable();
-        enable !== undefined ? setIsConnected(true) : setIsConnected(false);
-        // setAccountInfo();
-        await klaytn.on('accountsChanged', () => {
-          console.log('account changed');
-        });
-        await klaytn.on('networkChanged', () => {
-          console.log('network changed');
-          klaytn.selectedAddress === undefined
-            ? setNetwork('')
-            : setNetwork(klaytn.networkVersion);
-        });
-      } catch (error) {
-        alert('로그인이 실패하였습니다.');
-      }
-    } else {
-      alert('카이카스 지갑을 설치해주세요.');
-    }
-  };
 
   const loadAccountInfo = async () => {
     const { klaytn } = window;
@@ -72,9 +49,11 @@ const WalletConnection = () => {
       const account = klaytn.selectedAddress;
       if (account !== '' && account !== undefined) {
         setAddress(account);
-        const balancePeb = await caver.klay.getBalance(account);
-        const balance = caver.utils.fromPeb(balancePeb, 'KLAY');
-        setBalance(Math.floor(balance * 1000000) / 1000000);
+        // const balancePeb = await caver.klay.getBalance(account);
+        // const balance = caver.utils.fromPeb(balancePeb, 'KLAY');
+        // setBalance(Math.floor(balance * 1000000) / 1000000);
+        const soulBalance = await getSoulBalance(account);
+        setBalance(soulBalance);
         console.log('address : ', account);
         console.log('balance : ', balance);
         clearTimeout(timer);
@@ -93,9 +72,11 @@ const WalletConnection = () => {
         ? setNetwork('')
         : setNetwork(klaytn.networkVersion);
       const account = klaytn.selectedAddress;
-      const balancePeb = await caver.klay.getBalance(account);
-      const balance = caver.utils.fromPeb(balancePeb, 'KLAY');
-      setBalance(Math.floor(balance * 1000000) / 1000000);
+      // const balancePeb = await caver.klay.getBalance(account);
+      // const balance = caver.utils.fromPeb(balancePeb, 'KLAY');
+      // setBalance(Math.floor(balance * 1000000) / 1000000);
+      const soulBalance = await getSoulBalance(account);
+      setBalance(soulBalance);
     });
   };
 
