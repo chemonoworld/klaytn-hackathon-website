@@ -41,16 +41,27 @@ const NavbarWalletBtn = props => {
   };
   const handleCopyAddress = () => {
     navigator.clipboard.writeText(address);
-    const txtSpan = document.getElementById('txt-copy-address');
-    const ogChild = txtSpan?.lastChild;
-    const txtNode = document.createTextNode('COPIED!');
-    txtSpan?.removeChild(ogChild);
-    txtSpan?.appendChild(txtNode);
-    const timer = setTimeout(() => {
-      txtSpan?.removeChild(txtNode);
-      txtSpan?.appendChild(ogChild);
-      clearTimeout(timer);
-    }, 1000);
+    const txtSpanList = document.querySelectorAll('.txt-copy-address');
+    [...txtSpanList].map(span => {
+      const ogChild = span?.lastChild;
+      const txtNode = document.createTextNode('COPIED!!!');
+      span?.removeChild(ogChild);
+      span?.appendChild(txtNode);
+      const timer = setTimeout(() => {
+        span?.removeChild(txtNode);
+        span?.appendChild(ogChild);
+        // clearTimeout(timer);
+      }, 150);
+    });
+    // const ogChild = txtSpan?.lastChild;
+    // const txtNode = document.createTextNode('COPIED!!!');
+    // txtSpan?.removeChild(ogChild);
+    // txtSpan?.appendChild(txtNode);
+    // const timer = setTimeout(() => {
+    //   txtSpan?.removeChild(txtNode);
+    //   txtSpan?.appendChild(ogChild);
+    //   clearTimeout(timer);
+    // }, 1000);
   };
   const handleClickDropdown = e => {
     e.stopPropagation();

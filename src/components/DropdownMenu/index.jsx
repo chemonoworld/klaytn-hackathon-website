@@ -28,9 +28,7 @@ const DropdownMenu = props => {
           </span>
         </div>
         <div className="dd-menu" onClick={props.handleCopyAddress}>
-          <span id="txt-copy-address" className="dd-txt-common">
-            Copy address
-          </span>
+          <span className="txt-copy-address dd-txt-common">Copy address</span>
           <img src={COPY} className="copy-icon" alt="copy"></img>
         </div>
         <div className="dd-menu">
