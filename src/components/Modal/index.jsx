@@ -23,7 +23,10 @@ const Modal = () => {
           <div className="modal-txt-box">
             <span className="txt-red">0xSOUL</span> is Soul-Bound Token(SBT)
           </div>
-          <div className="modal-txt-box">to join DA0xSBT.</div>
+          <div className="modal-txt-box">
+            to join
+            <span className="txt-pink"> DA0xSBT</span>.
+          </div>
           <br />
           <div className="modal-txt-box">
             Your Soul will be stored on chain.
