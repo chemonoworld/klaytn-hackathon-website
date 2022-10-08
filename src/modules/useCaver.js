@@ -1,7 +1,7 @@
 import * as Caver from 'caver-js/index';
-import { ADDRESS } from '../contracts/address.ts';
-import sbtABI from '../contracts/abi/sbt.json';
-import soulABI from '../contracts/abi/sbt.json';
+import { ADDRESS } from '../Contracts/address';
+import sbtABI from '../Contracts/abi/sbt.json';
+import soulABI from '../Contracts/abi/sbt.json';
 
 const FIRST_PRESALE_ADDRESS = '0x2af78D92D7108A2b46188b947482891f34eb2E29';
 
