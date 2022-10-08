@@ -14,14 +14,14 @@ const Modal = () => {
     <div className="modal-container hidden">
       <div className="modal-content">
         <div className="modal-header-box">
-          <span className="modal-header-txt">KLAIM YOUR SOUL</span>
+          <span className="modal-header-txt"> KLAIM YOUR SOUL</span>
           <div className="btn-modal-close" onClick={closeModal}>
             <img id="modal-close-img" src={CLOSE} alt="X" />
           </div>
         </div>
         <div className="modal-content-box modal-txt-container">
           <div className="modal-txt-box">
-            <span className="txt-pink">0xSOUL</span> is Soul-Bound Token(SBT)
+            <span className="txt-red">0xSOUL</span> is Soul-Bound Token(SBT)
           </div>
           <div className="modal-txt-box">to join DA0xSBT.</div>
           <br />
@@ -29,7 +29,7 @@ const Modal = () => {
             Your Soul will be stored on chain.
           </div>
           <div className="modal-txt-box">
-            Connect your <span className="txt-pink">SOUL</span> to Twitter ID
+            Connect your <span className="txt-red">SOUL</span> to Twitter ID
           </div>
         </div>
         <div className="modal-input-container">
@@ -46,7 +46,7 @@ const Modal = () => {
           />
         </div>
         <div className="modal-content-box submit-btn-wrapper">
-          <Button className="submit-btn">
+          <Button className="submit-btn btn-red">
             <div className="submit-btn-text">Mint</div>
           </Button>
         </div>

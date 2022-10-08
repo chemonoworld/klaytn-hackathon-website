@@ -34,7 +34,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'unbounded-bold';
+  font-family: 'unbounded-medium';
   font-size: 1rem;
 }
 
@@ -66,8 +66,13 @@
 }
 
 .modal-header-txt {
-  font-size: 1.25rem;
-  color: $pink;
+  font-family: 'unbounded-bold';
+  font-size: 1.4rem;
+  color: $red;
+}
+
+.modal-header-txt:hover {
+  color: $cyan;
 }
 
 .submit-input {
