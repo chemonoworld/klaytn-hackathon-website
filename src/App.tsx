@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-
 import './App.scss';
 import Layout from './components/Layout';
 import MainPage from './pages/MainPage';
@@ -9,8 +8,12 @@ import { RecoilRoot } from 'recoil';
 import SoulPage from './pages/SoulPage';
 import RatingPage from './pages/Rating';
 
-// Main / Soul page 그냥 recoil로 전역 상태관리 하는게 나을 듯
 function App() {
+  const openModal = () => {
+    const modalContainer = document.querySelector('.modal-container');
+    modalContainer?.classList.remove('hidden');
+    console.log('open modal');
+  };
   return (
     <RecoilRoot>
       <BrowserRouter>

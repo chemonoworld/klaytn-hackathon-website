@@ -42,11 +42,15 @@ const SoulPage = () => {
   };
   const handleClickMainBtns = (btnType: MAIN_BUTTON_TYPE) => {
     if (btnType === MAIN_BUTTON_TYPE.KLAIM_YOUR_SOUL) {
-      alert('klaim your soul');
+      openModal();
     } else {
       alert('download extension');
-      // window.open('', '_blank');
     }
+  };
+  const openModal = () => {
+    const modalContainer = document.querySelector('.modal-container');
+    modalContainer?.classList.remove('hidden');
+    console.log('open modal');
   };
   return (
     <div className="root-container">
