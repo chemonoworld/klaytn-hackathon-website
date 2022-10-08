@@ -1,5 +1,5 @@
 import * as Caver from 'caver-js/index';
-import { ADDRESS } from '../contracts/address';
+import { ADDRESS } from '../contracts/address.ts';
 import sbtABI from '../contracts/abi/sbt.json';
 import soulABI from '../contracts/abi/sbt.json';
 
