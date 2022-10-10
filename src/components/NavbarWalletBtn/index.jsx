@@ -81,6 +81,7 @@ const NavbarWalletBtn = props => {
   const setAccountInfo = async () => {
     const { klaytn } = window;
     if (klaytn === undefined) return;
+    const DELAY = 1000;
     const timer = setTimeout(async () => {
       const account = klaytn.selectedAddress;
       if (account !== '' && account !== undefined) {
@@ -92,7 +93,7 @@ const NavbarWalletBtn = props => {
         setBalance(soulBalance);
         clearTimeout(timer);
       }
-    }, 1000);
+    }, DELAY);
   };
   const setNetworkInfo = async () => {
     const { klaytn } = window;

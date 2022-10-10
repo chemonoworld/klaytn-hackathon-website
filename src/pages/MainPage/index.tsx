@@ -24,22 +24,24 @@ const MainPage = () => {
     const joystick = document.querySelector('.btn-joystick');
     joystick?.setAttribute('class', 'btn-joystick btn-joystick-clicked');
     setIsJoystickTrans(true);
+    const DELAY = 500;
     const joystickTimer = setTimeout(() => {
       joystick?.setAttribute('class', 'btn-joystick');
       setIsJoystickTrans(false);
       clearTimeout(joystickTimer);
-    }, 500);
+    }, DELAY);
   };
   const handleSlide = () => {
     const mainLogo = document.querySelector('.main-logo');
     mainLogo?.setAttribute('class', 'main-logo main-logo-init');
     setIsLogoTranslate(true);
+    const DELAY = 500;
     const logoTimer = setTimeout(() => {
       const mainLogo = document.querySelector('.main-logo');
       mainLogo?.setAttribute('class', 'main-logo');
       setIsLogoTranslate(false);
       clearTimeout(logoTimer);
-    }, 500);
+    }, DELAY);
     startJoystickAnim();
   };
   const handleClickMainBtns = (btnType: MAIN_BUTTON_TYPE) => {
