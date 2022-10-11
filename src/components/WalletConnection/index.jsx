@@ -45,9 +45,9 @@ const WalletConnection = () => {
     klaytn.selectedAddress === undefined
       ? setNetwork('')
       : setNetwork(klaytn.networkVersion);
+    const DELAY = 1000;
     const timer = setTimeout(async () => {
       const account = klaytn.selectedAddress;
-      const DELAY = 1000;
       if (account !== '' && account !== undefined) {
         setAddress(account);
         // const balancePeb = await caver.klay.getBalance(account);
