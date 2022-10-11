@@ -94,10 +94,10 @@ ol > li > span {
       }
 
       .badge {
-        width: 30%;
+        //width: 30%;
         height: 30%;
         margin: 0 auto;
-        object-fit: cover;
+        object-fit: contain;
       }
 
       .input {

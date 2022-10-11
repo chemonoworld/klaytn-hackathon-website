@@ -158,7 +158,9 @@ function RatingPage() {
                   <p>{item.decentralization}</p>
                 </div>
                 <div className="content">
-                  {/**Number(item.culture) >= 60 && <img src={culture} className="badge" />*/}
+                  {Number(item.culture) >= 60 && (
+                    <img src={culture} className="badge" />
+                  )}
                   {Number(item.transparency) >= 60 && (
                     <img src={transparency} className="badge" />
                   )}
