@@ -46,7 +46,10 @@ const SoulPage = () => {
     if (btnType === MAIN_BUTTON_TYPE.KLAIM_YOUR_SOUL) {
       openModal();
     } else {
-      alert('download extension');
+      window.open(
+        'https://chrome.google.com/webstore/category/extensions',
+        '_blank',
+      );
     }
   };
   const openModal = () => {

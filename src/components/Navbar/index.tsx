@@ -27,7 +27,10 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="navbar-link-container">
-              <a href="/extension" className="navbar-link">
+              <a
+                href="https://chrome.google.com/webstore/category/extensions"
+                className="navbar-link"
+              >
                 Extension
               </a>
             </div>

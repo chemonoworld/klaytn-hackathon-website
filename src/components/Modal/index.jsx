@@ -3,11 +3,30 @@ import Button from '../Button';
 import './modal.scss';
 import CLOSE from '../../assets/images/close-icon.png';
 import FAVICON from '../../assets/images/favicon.png';
+import { mintSoul } from '../../modules/useCaver';
 const Modal = () => {
+  const [twitterId, setTwitterId] = useState('');
+  const onChange = event => {
+    const {
+      target: { value },
+    } = event;
+    setTwitterId(value);
+  };
+
   const closeModal = () => {
     const modalContainer = document.querySelector('.modal-container');
     modalContainer.classList.add('hidden');
     console.log('close modal');
+  };
+
+  const handleClickBtn = () => {
+    const { klaytn } = window;
+    const network = klaytn.networkVersion;
+    if (network === 8217) {
+      mintSoul(klaytn.selectedAddress, twitterId);
+    } else {
+      alert('Change current network to mainnet.');
+    }
   };
 
   return (
@@ -46,10 +65,11 @@ const Modal = () => {
             className="submit-input"
             type="text"
             placeholder="Your Twitter ID"
+            onChange={onChange}
           />
         </div>
         <div className="modal-content-box submit-btn-wrapper">
-          <Button className="submit-btn btn-red">
+          <Button className="submit-btn btn-red" onClick={handleClickBtn}>
             <div className="submit-btn-text">Mint</div>
           </Button>
         </div>

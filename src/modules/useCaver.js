@@ -1,7 +1,6 @@
 import * as Caver from 'caver-js/index';
 import { ADDRESS } from '../Contracts/address';
 import sbtABI from '../Contracts/abi/sbt.json';
-import soulABI from '../Contracts/abi/sbt.json';
 
 const TESTNET_ID = '1001'; //MAINNET 8217 TESTNET 1001
 const MAINNET_ID = '8217'; //MAINNET 8217 TESTNET 1001
@@ -67,6 +66,7 @@ const daoVote = async (daoAddress, voteArray) => {
   const from = walletAddress[0];
   const contractAddress = ADDRESS.test;
   const gas = 3000000;
+  const VOTE_FEE = 0;
 
   const data = caver.klay.abi.encodeFunctionCall(
     {
@@ -86,7 +86,7 @@ const daoVote = async (daoAddress, voteArray) => {
       to: contractAddress,
       data: data,
       gas: gas,
-      value: caver.utils.toPeb(0, 'KLAY'),
+      value: caver.utils.toPeb(VOTE_FEE, 'KLAY'),
     })
     .on('transactionHash', transactionHash => {
       console.log('txHash', transactionHash);
@@ -111,7 +111,7 @@ const viewScore = async address => {
 };
 
 //sendTx
-const buy_test = async nickname => {
+const mintSoul = async (address, twitterId) => {
   const { klaytn } = window;
   if (klaytn === undefined) {
     alert('카이카스 지갑을 설치해주세요.');
@@ -122,22 +122,24 @@ const buy_test = async nickname => {
     return;
   }
 
-  //should add 'try-catch' // 지갑 연결한 상태로 크롬 익스텐션 카이카스지갑에서 연결해제할 경우 예외처리
   const caver = new Caver(klaytn);
   const walletAddress = await klaytn.enable();
-  const from = walletAddress[0]; // 이거 enable로 고쳐야할듯?
-  const contractAddress = FIRST_PRESALE_ADDRESS;
+  const from = walletAddress[0];
+  const contractAddress = ADDRESS.main;
   const gas = 3000000;
-  const mintPrice = 20; // Peb : 20 KLAY
-
+  const MINT_PRICE = 0; // 20 KLAY
   const data = caver.klay.abi.encodeFunctionCall(
     {
-      name: 'nftReceiptMint',
+      name: 'safeMint',
       type: 'function',
-      inputs: [{ type: 'string', name: '_nickname' }],
+      inputs: [
+        { type: 'address', name: 'to' },
+        { type: 'string', name: 'twitterId' },
+      ],
     },
-    [nickname],
+    [address, twitterId],
   );
+
   caver.klay
     .sendTransaction({
       type: 'SMART_CONTRACT_EXECUTION',
@@ -145,7 +147,7 @@ const buy_test = async nickname => {
       to: contractAddress,
       data: data,
       gas: gas,
-      value: caver.utils.toPeb(mintPrice, 'KLAY'),
+      value: caver.utils.toPeb(MINT_PRICE, 'KLAY'),
     })
     .on('transactionHash', transactionHash => {
       console.log('txHash', transactionHash);
@@ -159,4 +161,4 @@ const buy_test = async nickname => {
     });
 };
 
-export { getSoulBalance, buy_test, viewDaos, viewScore, daoVote };
+export { getSoulBalance, mintSoul, viewDaos, viewScore, daoVote };
