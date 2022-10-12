@@ -64,7 +64,7 @@ const daoVote = async (daoAddress, voteArray) => {
   const caver = new Caver(klaytn);
   const walletAddress = await klaytn.enable();
   const from = walletAddress[0];
-  const contractAddress = ADDRESS.test;
+  const contractAddress = ADDRESS.main;
   const gas = 3000000;
   const VOTE_FEE = 0;
 
@@ -101,12 +101,12 @@ const daoVote = async (daoAddress, voteArray) => {
 };
 
 const viewDaos = async () => {
-  const result = await soulContract.methods.viewDaos().call();
+  const result = await soulContractOnMainnet.methods.viewDaos().call();
   return result;
 };
 
 const viewScore = async address => {
-  const result = await soulContract.methods.viewScore(address).call();
+  const result = await soulContractOnMainnet.methods.viewScore(address).call();
   return result;
 };
 

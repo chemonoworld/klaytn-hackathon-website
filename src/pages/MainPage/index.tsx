@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Button from '../../components/Button';
 import SBT from '../../assets/images/sbt-256.png';
 import './mainpage.scss';
-// import { test } from '../../modules/useCaver';
 import { Link, useNavigate } from 'react-router-dom';
 import { MAIN_BUTTON_TYPE } from '../../enums/mainButtonType';
 
