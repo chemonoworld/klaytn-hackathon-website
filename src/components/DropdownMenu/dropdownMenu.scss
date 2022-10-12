@@ -82,3 +82,13 @@
   width: 1rem;
   height: 1rem;
 }
+
+.img-column-center {
+  display: flex;
+  text-align: center;
+}
+
+.flex-row-dir {
+  display: flex;
+  flex-direction: row;
+}

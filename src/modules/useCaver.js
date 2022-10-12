@@ -3,14 +3,24 @@ import { ADDRESS } from '../Contracts/address';
 import sbtABI from '../Contracts/abi/sbt.json';
 import soulABI from '../Contracts/abi/sbt.json';
 
-const CHAIN_ID = '1001'; //MAINNET 8217 TESTNET 1001
+const TESTNET_ID = '1001'; //MAINNET 8217 TESTNET 1001
+const MAINNET_ID = '8217'; //MAINNET 8217 TESTNET 1001
 const option = {
   headers: [
     {
       name: 'Authorization',
       value: process.env.REACT_APP_KAS_KEY,
     },
-    { name: 'x-chain-id', value: CHAIN_ID },
+    { name: 'x-chain-id', value: TESTNET_ID },
+  ],
+};
+const optionForMainnet = {
+  headers: [
+    {
+      name: 'Authorization',
+      value: process.env.REACT_APP_KAS_KEY,
+    },
+    { name: 'x-chain-id', value: MAINNET_ID },
   ],
 };
 
@@ -22,19 +32,21 @@ const caverForCall = new Caver(
   ),
 );
 
-const soulContract = new caverForCall.contract(sbtABI, ADDRESS.test);
-const soulContractVer2 = new caverForCall.contract(sbtABI, ADDRESS.main);
+const caverForCallForMainnet = new Caver(
+  new Caver.providers.HttpProvider(
+    'https://node-api.klaytnapi.com/v1/klaytn',
+    optionForMainnet,
+  ),
+);
 
-//call
-const test = async () => {
-  const count = await soulContract.methods.totalSupply().call();
-  console.log(count);
-  // alert(count);
-  return count;
-};
+const soulContract = new caverForCall.contract(sbtABI, ADDRESS.test);
+const soulContractOnMainnet = new caverForCallForMainnet.contract(
+  sbtABI,
+  ADDRESS.main,
+);
 
 const getSoulBalance = async address => {
-  const balance = await soulContractVer2.methods.balanceOf(address).call();
+  const balance = await soulContractOnMainnet.methods.balanceOf(address).call();
   return balance;
 };
 
@@ -52,7 +64,7 @@ const daoVote = async (daoAddress, voteArray) => {
   //should add 'try-catch' // 지갑 연결한 상태로 크롬 익스텐션 카이카스지갑에서 연결해제할 경우 예외처리
   const caver = new Caver(klaytn);
   const walletAddress = await klaytn.enable();
-  const from = walletAddress[0]; // 이거 enable로 고쳐야할듯?
+  const from = walletAddress[0];
   const contractAddress = ADDRESS.test;
   const gas = 3000000;
 

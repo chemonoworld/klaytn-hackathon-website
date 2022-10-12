@@ -1,4 +1,5 @@
 import COPY from '../../assets/images/copy-24.png';
+import SOUL from '../../assets/images/soul-16.png';
 import './dropdownMenu.scss';
 
 const DropdownMenu = props => {
@@ -18,12 +19,16 @@ const DropdownMenu = props => {
           </span>
         </div>
         <div className="dd-menu">
-          <span className="dd-txt-common">
-            0xSOUL:
+          <span className="dd-txt-common flex-row-dir">
+            <div>
+              <span>0xSOUL: </span>
+            </div>
             {props.balance > 0 ? (
-              <span className="txt-green"> {props.balance}</span>
+              <div className="img-column-center">
+                <img src={SOUL} alt="soul-icon-16" width="24" height="24"></img>
+              </div>
             ) : (
-              <span className="txt-red"> 0</span>
+              <span className="txt-red"> INVALID</span>
             )}
           </span>
         </div>
