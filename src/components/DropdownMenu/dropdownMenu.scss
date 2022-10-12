@@ -92,3 +92,18 @@
   display: flex;
   flex-direction: row;
 }
+
+.soul-img-container:hover {
+  animation: vibration 0.1s infinite;
+}
+
+@keyframes vibration {
+  from {
+    transform: rotate(5deg);
+    transform: translate(2px);
+  }
+  to {
+    transform: rotate(-5deg);
+    transform: translate(-2px);
+  }
+}

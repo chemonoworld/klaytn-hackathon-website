@@ -24,7 +24,7 @@ const DropdownMenu = props => {
               <span>0xSOUL: </span>
             </div>
             {props.balance > 0 ? (
-              <div className="img-column-center">
+              <div className="soul-img-container img-column-center">
                 <img src={SOUL} alt="soul-icon-16" width="24" height="24"></img>
               </div>
             ) : (
