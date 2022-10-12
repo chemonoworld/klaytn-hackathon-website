@@ -5,12 +5,7 @@ import transparency from '../../assets/images/transparency.png';
 import culture from '../../assets/images/culture.png';
 import './rating.scss';
 import { Link } from 'react-router-dom';
-import {
-  nftBalanceOf,
-  viewDaos,
-  viewScore,
-  daoVote,
-} from '../../modules/useCaver';
+import { viewDaos, viewScore, daoVote } from '../../modules/useCaver';
 
 interface IRating {
   dao: string;
