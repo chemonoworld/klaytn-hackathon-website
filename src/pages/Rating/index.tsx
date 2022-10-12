@@ -4,7 +4,6 @@ import decentralized from '../../assets/images/decentralized.png';
 import transparency from '../../assets/images/transparency.png';
 import culture from '../../assets/images/culture.png';
 import './rating.scss';
-import { Link } from 'react-router-dom';
 import { viewDaos, viewScore, daoVote } from '../../modules/useCaver';
 
 interface IRating {

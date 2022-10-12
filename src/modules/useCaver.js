@@ -23,7 +23,6 @@ const optionForMainnet = {
   ],
 };
 
-//define caver for call
 const caverForCall = new Caver(
   new Caver.providers.HttpProvider(
     'https://node-api.klaytnapi.com/v1/klaytn',
@@ -53,14 +52,13 @@ const getSoulBalance = async address => {
 const daoVote = async (daoAddress, voteArray) => {
   const { klaytn } = window;
   if (klaytn === undefined) {
-    alert('카이카스 지갑을 설치해주세요.');
+    alert('Install Kaikas wallet');
     return;
   }
   if (klaytn.selectedAddress === undefined) {
-    alert('지갑을 연결해주세요.');
+    alert('Connect Kaikas wallet');
     return;
   }
-  //should add 'try-catch' // 지갑 연결한 상태로 크롬 익스텐션 카이카스지갑에서 연결해제할 경우 예외처리
   const caver = new Caver(klaytn);
   const walletAddress = await klaytn.enable();
   const from = walletAddress[0];
@@ -114,11 +112,11 @@ const viewScore = async address => {
 const mintSoul = async (address, twitterId) => {
   const { klaytn } = window;
   if (klaytn === undefined) {
-    alert('카이카스 지갑을 설치해주세요.');
+    alert('Install Kaikas wallet');
     return;
   }
   if (klaytn.selectedAddress === undefined) {
-    alert('지갑을 연결해주세요.');
+    alert('Connect Kaikas wallet');
     return;
   }
 
