@@ -59,6 +59,10 @@ const daoVote = async (daoAddress, voteArray) => {
     alert('Connect Kaikas wallet');
     return;
   }
+  if (klaytn.networkVersion !== 8217) {
+    alert('Change current network to mainnet');
+    return;
+  }
   const caver = new Caver(klaytn);
   const walletAddress = await klaytn.enable();
   const from = walletAddress[0];
@@ -119,7 +123,10 @@ const mintSoul = async (address, twitterId) => {
     alert('Connect Kaikas wallet');
     return;
   }
-
+  if (klaytn.networkVersion !== 8217) {
+    alert('Change current network to mainnet');
+    return;
+  }
   const caver = new Caver(klaytn);
   const walletAddress = await klaytn.enable();
   const from = walletAddress[0];

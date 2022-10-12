@@ -16,17 +16,12 @@ const Modal = () => {
   const closeModal = () => {
     const modalContainer = document.querySelector('.modal-container');
     modalContainer.classList.add('hidden');
-    console.log('close modal');
+    const inputEl = document.getElementById('minting-input');
+    inputEl.value = null;
   };
 
   const handleClickBtn = () => {
-    const { klaytn } = window;
-    const network = klaytn.networkVersion;
-    if (network === 8217) {
-      mintSoul(klaytn.selectedAddress, twitterId);
-    } else {
-      alert('Change current network to mainnet.');
-    }
+    mintSoul(klaytn.selectedAddress, twitterId);
   };
 
   return (
@@ -62,6 +57,7 @@ const Modal = () => {
             <span> • • • </span>
           </div>
           <input
+            id="minting-input"
             className="submit-input"
             type="text"
             placeholder="Your Twitter ID"
