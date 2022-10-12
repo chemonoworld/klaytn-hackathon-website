@@ -3,8 +3,6 @@ import { ADDRESS } from '../Contracts/address';
 import sbtABI from '../Contracts/abi/sbt.json';
 import soulABI from '../Contracts/abi/sbt.json';
 
-const FIRST_PRESALE_ADDRESS = '0x2af78D92D7108A2b46188b947482891f34eb2E29';
-
 const CHAIN_ID = '1001'; //MAINNET 8217 TESTNET 1001
 const option = {
   headers: [
@@ -24,8 +22,8 @@ const caverForCall = new Caver(
   ),
 );
 
-const soulContract = new caverForCall.contract(sbtABI, ADDRESS.sbt);
-const soulContractVer2 = new caverForCall.contract(sbtABI, ADDRESS.soul);
+const soulContract = new caverForCall.contract(sbtABI, ADDRESS.test);
+const soulContractVer2 = new caverForCall.contract(sbtABI, ADDRESS.main);
 
 //call
 const test = async () => {
@@ -55,7 +53,7 @@ const daoVote = async (daoAddress, voteArray) => {
   const caver = new Caver(klaytn);
   const walletAddress = await klaytn.enable();
   const from = walletAddress[0]; // 이거 enable로 고쳐야할듯?
-  const contractAddress = ADDRESS.sbt;
+  const contractAddress = ADDRESS.test;
   const gas = 3000000;
 
   const data = caver.klay.abi.encodeFunctionCall(
