@@ -95,9 +95,14 @@ ol > li > span {
 
       .badge {
         //width: 30%;
-        height: 30%;
+        height: 45%;
         margin: 0 auto;
         object-fit: contain;
+      }
+
+      .culture-badge {
+        width: 48%;
+        height: 48%;
       }
 
       .input {

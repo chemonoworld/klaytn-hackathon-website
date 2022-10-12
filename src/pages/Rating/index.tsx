@@ -153,7 +153,9 @@ function RatingPage() {
                 </div>
                 <div className="content">
                   {Number(item.culture) >= 60 && (
-                    <img src={culture} className="badge" />
+                    <div className="cultur-badge-container">
+                      <img src={culture} className="badge culture-badge" />
+                    </div>
                   )}
                   {Number(item.transparency) >= 60 && (
                     <img src={transparency} className="badge" />
