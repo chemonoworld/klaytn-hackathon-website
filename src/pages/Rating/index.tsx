@@ -32,7 +32,7 @@ function RatingPage() {
       const rate: IRating = {
         dao: addrDiaplay(item),
         daoAddress: item,
-        link: `https://baobab.scope.klaytn.com/account/${item}?tabId=approvals&sub=kip7`,
+        link: `https://scope.klaytn.com/account/${item}?tabId=approvals&sub=kip7`,
         culture: score[0],
         transparency: score[1],
         decentralization: score[2],
