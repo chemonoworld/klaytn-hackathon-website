@@ -87,23 +87,23 @@ const SoulPage = () => {
               </li>
               <li>
                 <span>
-                  Extension shows your{' '}
-                  <span className="txt-red txt-hover-cyan">SOUL</span> on
-                  Twitter
+                  Klaim your{' '}
+                  <span className="txt-red txt-hover-cyan">SOUL</span> to join
+                  DA0xSBT
                 </span>
               </li>
               <li>
                 <span>
-                  Extension shows the list of{' '}
-                  <span className="txt-red txt-hover-cyan">DAOs</span> you
-                  belong to
+                  Extension is a{' '}
+                  <span className="txt-red txt-hover-cyan">bridge</span> between
+                  DA0xSBT & Twitter
                 </span>
               </li>
               <li>
-                <span className="new-line-float-left">
-                  Extension show the{' '}
-                  <span className="txt-red txt-hover-cyan">rating</span> of the
-                  DAOs you belong to
+                <span>
+                  Download{' '}
+                  <span className="txt-red txt-hover-cyan">EXTENSION </span>to
+                  show 0xSOUL on Twitter
                 </span>
               </li>
             </ol>
