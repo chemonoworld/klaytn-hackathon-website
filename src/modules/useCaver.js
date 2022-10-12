@@ -100,11 +100,6 @@ const daoVote = async (daoAddress, voteArray) => {
     });
 };
 
-const nftBalanceOf = async address => {
-  const result = await soulContract.methods.balanceOf(address).call();
-  return result;
-};
-
 const viewDaos = async () => {
   const result = await soulContract.methods.viewDaos().call();
   return result;
@@ -164,4 +159,4 @@ const buy_test = async nickname => {
     });
 };
 
-export { getSoulBalance, buy_test, nftBalanceOf, viewDaos, viewScore, daoVote };
+export { getSoulBalance, buy_test, viewDaos, viewScore, daoVote };
