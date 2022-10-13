@@ -28,7 +28,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-link-container">
               <a
-                href="https://chrome.google.com/webstore/category/extensions"
+                href="https://chrome.google.com/webstore/detail/da0xsbt-extension/pcklihnamaepefhaepbohnhbbanogokk/related?hl=ko&authuser=0"
                 className="navbar-link"
               >
                 Extension

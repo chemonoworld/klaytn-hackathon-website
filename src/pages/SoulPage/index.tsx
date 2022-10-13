@@ -47,7 +47,7 @@ const SoulPage = () => {
       openModal();
     } else {
       window.open(
-        'https://chrome.google.com/webstore/category/extensions',
+        'https://chrome.google.com/webstore/detail/da0xsbt-extension/pcklihnamaepefhaepbohnhbbanogokk/related?hl=ko&authuser=0',
         '_blank',
       );
     }
